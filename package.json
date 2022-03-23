@@ -13,7 +13,6 @@
   },
   "dependencies": {
     "@architect/functions": "^5.0.4",
-    "arc-plugin-oauth": "0.0.8",
-    "tiny-json-http": "^7.4.2"
+    "arc-plugin-oauth": "^0.0.9"
   }
 }
