@@ -13,6 +13,6 @@
   },
   "dependencies": {
     "@architect/functions": "^5.0.4",
-    "arc-plugin-oauth": "git+https://github.com/macdonst/arc-plugin-oauth.git"
+    "arc-plugin-oauth": "^0.0.12"
   }
 }

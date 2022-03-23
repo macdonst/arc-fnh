@@ -1,7 +1,11 @@
-// import arc from "@architect/functions"
+import arc from '@architect/functions'
 import { getGames } from "@architect/shared/db/games.mjs"
+import arcOauth from 'arc-plugin-oauth'
+const auth = arcOauth.auth
 
-export async function handler (req) {
+export const handler = arc.http.async(auth, games)
+
+async function games (req) {
   let games = await getGames()
 
   console.log(games)
@@ -30,21 +34,18 @@ export async function handler (req) {
         <tr><th>date</th><th>time</th><th>facility</th><th>actions</th></tr>
       </thead>
       <tbody>
-        ${games.map(game => `<tr><td>${game.date}</td><td>${game.time}</td><td>${game.facility}</td><td><form method="post" action="/players/${game.date}"><button>update</button></form><form method="post" action="/players/${game.date}/delete"><button>delete</button></form></td></tr>`).join('')}
+        ${games.map(game => `<tr><td>${game.date}</td><td>${game.time}</td><td>${game.facility}</td><td><form method="post" action="/games/${game.date}"><button>update</button></form><form method="post" action="/games/${game.date}/delete"><button>delete</button></form></td></tr>`).join('')}
       </tbody>
     <table>
-    <form action="/players" method="post">
-      <label for=name>name</label>
-      <input type=text name=name required>
+    <form action="/games" method="post">
+      <label for=name>date</label>
+      <input type=text name=date required>
       <br/>
-      <label for=name>email</label>
-      <input type=text name=email required>
+      <label for=name>time</label>
+      <input type=text name=time required>
       <br/>
-      <label for=name>phone</label>
-      <input type=text name=phone required>
-      <br/>
-      <label for=name>fulltime</label>
-      <input type="checkbox"name="fulltime">
+      <label for=name>facility</label>
+      <input type=text name=facility required>
       <br/>
 
       <button>save</button>

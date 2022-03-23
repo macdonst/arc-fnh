@@ -1,7 +1,11 @@
-// import arc from "@architect/functions"
+import arc from "@architect/functions"
 import { getFulltimePlayers } from "@architect/shared/db/players.mjs"
+import arcOauth from 'arc-plugin-oauth'
+const auth = arcOauth.auth
 
-export async function handler (req) {
+export const handler = arc.http.async(auth, players)
+
+async function players (req) {
   let fulltimePlayers = await getFulltimePlayers()
 
   console.log(fulltimePlayers)
