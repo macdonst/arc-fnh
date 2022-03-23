@@ -12,6 +12,7 @@
     "tape": "^5.5.2"
   },
   "dependencies": {
+    "@architect/functions": "^5.0.4",
     "arc-plugin-oauth": "0.0.8",
     "tiny-json-http": "^7.4.2"
   }
