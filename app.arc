@@ -11,6 +11,7 @@ get /games
 post /games
 post /games/:id
 post /games/:id/delete
+get /props
 
 @plugins
 arc-plugin-oauth
