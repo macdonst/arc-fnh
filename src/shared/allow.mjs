@@ -1,13 +1,9 @@
 //src/shared/allow.mjs
 export default {
     appAccounts: {
-      janedoe: {
+      macdonst: {
         role: 'admin',
-        name: 'Jane Doe'
-      },
-      johnsmith: {
-        role: 'member',
-        name: 'John Smith'
+        name: 'Simon MacDonald'
       }
     }
   }
