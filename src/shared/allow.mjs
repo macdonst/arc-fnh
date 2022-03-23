@@ -2,7 +2,7 @@
 export default {
     appAccounts: {
       macdonst: {
-        role: 'admin',
+        login: 'macdonst',
         name: 'Simon MacDonald'
       }
     }
