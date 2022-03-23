@@ -131,3 +131,6 @@ dist
 
 # seed-data
 sandbox-seed.js
+
+# arc project files
+preferences.arc
