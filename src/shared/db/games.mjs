@@ -8,4 +8,22 @@ const getGames = async function() {
     return games.Items
 }
 
-export { getGames }
+const upsertGame = async function(game) {
+    const db = await arc.tables()
+
+    let result = await db.games.put(game)
+
+    return result
+}
+
+const deleteGame = async function(id) {
+    const db = await arc.tables()
+
+    let result = await db.games.delete({
+        date: id
+    })
+
+    return result
+}
+
+export { deleteGame, getGames, upsertGame }
