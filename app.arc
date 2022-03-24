@@ -1,8 +1,13 @@
 @app
 arc-fnh
 
+@static
+fingerprint true
+folder public
+
 @http
 get /
+get /components/*
 get /players
 post /players
 post /players/:id
