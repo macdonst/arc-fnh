@@ -1,29 +1,29 @@
-import arc from "@architect/functions"
+import arc from '@architect/functions'
 
-const getGames = async function() {
-    const db = await arc.tables()
+const getGames = async function () {
+  const db = await arc.tables()
 
-    let games = await db.games.scan()
+  let games = await db.games.scan()
 
-    return games.Items
+  return games.Items
 }
 
-const upsertGame = async function(game) {
-    const db = await arc.tables()
+const upsertGame = async function (game) {
+  const db = await arc.tables()
 
-    let result = await db.games.put(game)
+  let result = await db.games.put(game)
 
-    return result
+  return result
 }
 
-const deleteGame = async function(id) {
-    const db = await arc.tables()
+const deleteGame = async function (id) {
+  const db = await arc.tables()
 
-    let result = await db.games.delete({
-        date: id
-    })
+  let result = await db.games.delete({
+    date: id
+  })
 
-    return result
+  return result
 }
 
 export { deleteGame, getGames, upsertGame }

@@ -4,7 +4,7 @@ const auth = arcOauth.auth
 
 export const handler = arc.http.async(auth, index)
 
-async function index (req) {
+async function index() {
   return {
     html: `
     <html>

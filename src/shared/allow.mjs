@@ -1,9 +1,9 @@
-//src/shared/allow.mjs
+// src/shared/allow.mjs
 export default {
-    appAccounts: {
-      macdonst: {
-        login: 'macdonst',
-        name: 'Simon MacDonald'
-      }
+  appAccounts: {
+    macdonst: {
+      login: 'macdonst',
+      name: 'Simon MacDonald'
     }
   }
+}

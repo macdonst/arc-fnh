@@ -3,16 +3,56 @@
   "version": "0.0.0",
   "description": "A fresh new Architect project!",
   "scripts": {
+    "lint": "eslint 'src/**/**.*js' --ignore-pattern node_modules  --fix",
     "start": "npx sandbox",
-    "test": "tape 'test/**/*.js' | tap-arc"
+    "test": "npm run lint & npm run test:unit",
+    "test:unit": "tape 'test/**/*.js' | tap-arc"
   },
   "devDependencies": {
     "@architect/architect": "^10.1.0",
+    "@architect/eslint-config": "^2.0.1",
+    "eslint": "^8.11.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "^2.6.0",
+    "prettier-eslint": "^13.0.0",
     "tap-arc": "^0.1.2",
     "tape": "^5.5.2"
   },
   "dependencies": {
     "@architect/functions": "^5.0.4",
     "arc-plugin-oauth": "^0.0.12"
+  },
+  "eslintConfig": {
+    "extends": [
+        "@architect/eslint-config",
+        "plugin:prettier/recommended"
+    ],
+    "plugins": [
+        "prettier"
+    ],
+    "rules": {
+        "func-style": "off",
+        "prettier/prettier": [
+            "error",
+            {
+                "semi": false,
+                "singleQuote": true,
+                "tabWidth": 2,
+                "useTabs": false,
+                "trailingComma": "none",
+                "bracketSameLine": true
+            }
+        ]
+    },
+    "parserOptions": {
+        "ecmaVersion": 2020,
+        "sourceType": "module"
+    },
+    "env": {
+        "es2021": true,
+        "browser": true,
+        "node": true
+    }
   }
 }

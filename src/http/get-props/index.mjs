@@ -1,7 +1,7 @@
 import arc from '@architect/functions'
 export const handler = arc.http.async(index)
 
-async function index (req) {
+async function index() {
   return {
     html: `
     <html>

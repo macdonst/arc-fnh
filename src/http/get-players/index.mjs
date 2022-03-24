@@ -1,11 +1,11 @@
-import arc from "@architect/functions"
-import { getFulltimePlayers } from "@architect/shared/db/players.mjs"
+import arc from '@architect/functions'
+import { getFulltimePlayers } from '@architect/shared/db/players.mjs'
 import arcOauth from 'arc-plugin-oauth'
 const auth = arcOauth.auth
 
 export const handler = arc.http.async(auth, players)
 
-async function players (req) {
+async function players() {
   let fulltimePlayers = await getFulltimePlayers()
 
   console.log(fulltimePlayers)
@@ -13,7 +13,8 @@ async function players (req) {
   return {
     statusCode: 200,
     headers: {
-      'cache-control': 'no-cache, no-store, must-revalidate, max-age=0, s-maxage=0',
+      'cache-control':
+        'no-cache, no-store, must-revalidate, max-age=0, s-maxage=0',
       'content-type': 'text/html; charset=utf8'
     },
     body: `
@@ -34,7 +35,12 @@ async function players (req) {
         <tr><th>name</th><th>email</th><th>phone</th><th>fulltime</th><th>actions</th></tr>
       </thead>
       <tbody>
-        ${fulltimePlayers.map(player => `<tr><td>${player.name}</td><td>${player.email}</td><td>${player.phone}</td><td>${player.fulltime}</td><td><form method="post" action="/players/${player.email}"><button>update</button></form><form method="post" action="/players/${player.email}/delete"><button>delete</button></form></td></tr>`).join('')}
+        ${fulltimePlayers
+          .map(
+            (player) =>
+              `<tr><td>${player.name}</td><td>${player.email}</td><td>${player.phone}</td><td>${player.fulltime}</td><td><form method="post" action="/players/${player.email}"><button>update</button></form><form method="post" action="/players/${player.email}/delete"><button>delete</button></form></td></tr>`
+          )
+          .join('')}
       </tbody>
     <table>
     <form action="/players" method="post">

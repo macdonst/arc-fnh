@@ -1,11 +1,11 @@
 import arc from '@architect/functions'
-import { getGames } from "@architect/shared/db/games.mjs"
+import { getGames } from '@architect/shared/db/games.mjs'
 import arcOauth from 'arc-plugin-oauth'
 const auth = arcOauth.auth
 
 export const handler = arc.http.async(auth, games)
 
-async function games (req) {
+async function games() {
   let games = await getGames()
 
   console.log(games)
@@ -13,7 +13,8 @@ async function games (req) {
   return {
     statusCode: 200,
     headers: {
-      'cache-control': 'no-cache, no-store, must-revalidate, max-age=0, s-maxage=0',
+      'cache-control':
+        'no-cache, no-store, must-revalidate, max-age=0, s-maxage=0',
       'content-type': 'text/html; charset=utf8'
     },
     body: `
@@ -34,7 +35,12 @@ async function games (req) {
         <tr><th>date</th><th>time</th><th>facility</th><th>actions</th></tr>
       </thead>
       <tbody>
-        ${games.map(game => `<tr><td>${game.date}</td><td>${game.time}</td><td>${game.facility}</td><td><form method="post" action="/games/${game.date}"><button>update</button></form><form method="post" action="/games/${game.date}/delete"><button>delete</button></form></td></tr>`).join('')}
+        ${games
+          .map(
+            (game) =>
+              `<tr><td>${game.date}</td><td>${game.time}</td><td>${game.facility}</td><td><form method="post" action="/games/${game.date}"><button>update</button></form><form method="post" action="/games/${game.date}/delete"><button>delete</button></form></td></tr>`
+          )
+          .join('')}
       </tbody>
     <table>
     <form action="/games" method="post">
