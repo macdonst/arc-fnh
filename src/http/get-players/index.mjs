@@ -13,7 +13,7 @@ async function players(req) {
   return {
     html: render(
       `
-    <hockey-header></hockey-header>
+    <hockey-page>
     <table>
       <thead>
         <tr><th>name</th><th>email</th><th>phone</th><th>fulltime</th><th>actions</th></tr>
@@ -43,6 +43,7 @@ async function players(req) {
 
       <button>save</button>
     </form>
+    </hockey-page>
 `,
       initialState
     )

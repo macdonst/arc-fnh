@@ -11,11 +11,12 @@ async function index(req) {
   return {
     html: render(
       `
-        <hockey-header></hockey-header>
+        <hockey-page>
         <p>You are Authenticated</p>
         <form method="post" action="/logout">
           <button type="submit">Logout</button>
         </form>
+        </hockey-page>
       `,
       initialState
     )

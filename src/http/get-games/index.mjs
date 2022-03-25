@@ -13,7 +13,7 @@ async function games(req) {
   return {
     html: render(
       `
-    <hockey-header></hockey-header>
+    <hockey-page>
     <table>
       <thead>
         <tr><th>date</th><th>time</th><th>facility</th><th>actions</th></tr>
@@ -40,6 +40,7 @@ async function games(req) {
 
       <button>save</button>
     </form>
+    </hockey-page>
   `,
       initialState
     )
