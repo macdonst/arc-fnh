@@ -3,17 +3,17 @@ import render from '@architect/views/render.mjs'
 import { getGames } from '@architect/shared/db/games.mjs'
 import arcOauth from 'arc-plugin-oauth'
 const auth = arcOauth.auth
-const checkAuth = arcOauth.checkAuth
 
 export const handler = arc.http.async(auth, games)
 
 async function games(req) {
   const games = await getGames()
-  const authenticated = checkAuth(req) ? true : false
+  const initialState = { account: req.session?.account }
 
   return {
-    html: render(`
-    <hockey-header auth="${authenticated}"></hockey-header>
+    html: render(
+      `
+    <hockey-header></hockey-header>
     <table>
       <thead>
         <tr><th>date</th><th>time</th><th>facility</th><th>actions</th></tr>
@@ -40,6 +40,8 @@ async function games(req) {
 
       <button>save</button>
     </form>
-  `)
+  `,
+      initialState
+    )
   }
 }

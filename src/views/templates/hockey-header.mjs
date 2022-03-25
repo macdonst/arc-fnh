@@ -1,10 +1,8 @@
 export default function HockeyHeaderTemplate({ html, state = {} }) {
-  const { auth } = state.attrs
-  console.log('HockeyHeader')
-  const btn =
-    auth === 'true'
-      ? '<hockey-logout-button></hockey-logout-button>'
-      : '<hockey-login-button></hockey-login-button>'
+  const { account } = state.store
+  const btn = account
+    ? '<hockey-logout-button></hockey-logout-button>'
+    : '<hockey-login-button></hockey-login-button>'
 
   return html`
     <div

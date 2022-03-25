@@ -3,17 +3,17 @@ import render from '@architect/views/render.mjs'
 import { getFulltimePlayers } from '@architect/shared/db/players.mjs'
 import arcOauth from 'arc-plugin-oauth'
 const auth = arcOauth.auth
-const checkAuth = arcOauth.checkAuth
 
 export const handler = arc.http.async(auth, players)
 
 async function players(req) {
   const fulltimePlayers = await getFulltimePlayers()
-  const authenticated = checkAuth(req) ? true : false
+  const initialState = { account: req.session?.account }
 
   return {
-    html: render(`
-    <hockey-header auth="${authenticated}"></hockey-header>
+    html: render(
+      `
+    <hockey-header></hockey-header>
     <table>
       <thead>
         <tr><th>name</th><th>email</th><th>phone</th><th>fulltime</th><th>actions</th></tr>
@@ -43,6 +43,8 @@ async function players(req) {
 
       <button>save</button>
     </form>
-`)
+`,
+      initialState
+    )
   }
 }
