@@ -14,19 +14,32 @@ async function games(req) {
     html: render(
       `
     <hockey-page>
-    <table>
-      <thead>
-        <tr><th>date</th><th>time</th><th>facility</th><th>actions</th></tr>
-      </thead>
-      <tbody>
-        ${games
-          .map(
-            (game) =>
-              `<tr><td>${game.date}</td><td>${game.time}</td><td>${game.facility}</td><td><form method="post" action="/games/${game.date}"><button>update</button></form><form method="post" action="/games/${game.date}/delete"><button>delete</button></form></td></tr>`
-          )
-          .join('')}
-      </tbody>
-    <table>
+    <hockey-table>
+      <table>
+        <thead>
+          <tr><th>Date</th><th>Time</th><th>Facility</th><th>Actions</th></tr>
+        </thead>
+        <tbody>
+          ${games
+            .map(
+              (game) =>
+                `<tr>
+                  <td>${game.date}</td>
+                  <td>${game.time}</td>
+                  <td>${game.facility}</td>
+                  <td>
+                    <hockey-action-buttons>
+                      <hockey-action-button action="/games/${game.date}" label="write"></hockey-action-button>
+                      <hockey-action-button action="/games/${game.date}/delete" label="delete"></hockey-action-button>
+                    </hockey-action-buttons>
+                  </td>
+                </tr>`
+            )
+            .join('')}
+        </tbody>
+      <table>
+    </hockey-table>
+
     <form action="/games" method="post">
       <label for=name>date</label>
       <input type=text name=date required>

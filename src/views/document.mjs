@@ -1,3 +1,4 @@
+import Symbols from './symbols.mjs'
 export default function Document(body = '') {
   return /* html */ `
   <!DOCTYPE html>
@@ -7,6 +8,7 @@ export default function Document(body = '') {
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="stylesheet" href="/components/css/styles.css"/>
+      <link rel="stylesheet" href="/components/css/ss-standard.css"/>
       <style>
       .bg-gradient {
         background-image: var(--bg-gradient)
@@ -17,6 +19,7 @@ export default function Document(body = '') {
       .sparkle-size {
         font-size: clamp(0rem, 10vw, 4rem);
       }
+      .bg-darkblue,
       .bg-hover-dark-blue:hover {
         background-color: var(--dark-blue);
       }
@@ -24,11 +27,17 @@ export default function Document(body = '') {
       .bg-blue:active {
         background-color: var(--blue);
       }
+      .bg-light {
+        background-color: var(--light);
+      }
       .color-hover-white:hover {
         color: var(--white);
       }
       .color-light {
         color: var(--light);
+      }
+      .color-white {
+        color: var(--white);
       }
       .border-gradient {
         border-color: var(--blue);
@@ -39,6 +48,7 @@ export default function Document(body = '') {
     </style>
     </head>
     <body class="font-sans">
+    ${Symbols}
     ${body}
     </body>
   </html>
