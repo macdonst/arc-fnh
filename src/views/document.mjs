@@ -36,6 +36,9 @@ export default function Document(body = '') {
       .color-light {
         color: var(--light);
       }
+      .color-blue {
+        color: var(--blue);
+      }
       .color-white {
         color: var(--white);
       }

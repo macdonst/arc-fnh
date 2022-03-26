@@ -10,6 +10,7 @@ export default function HockeyHeaderTemplate({ html, state = {} }) {
     sticky
     top0
     z1
+    color-white
   ">
       <header
         class="
@@ -90,7 +91,84 @@ export default function HockeyHeaderTemplate({ html, state = {} }) {
          flex-grow
          justify-between
         ">
-              <slot></slot>
+              <a
+                class="
+flex
+uppercase
+items-center
+font-medium
+leading5
+text-p8
+radius-pill
+text-h0
+mb-2
+mb-none-lg
+mr-0-lg
+pr1
+pl0
+bg-a3
+no-underline
+"
+                alt="Games"
+                href="/games">
+                <div class="icon-nav mr-2 f-p26">
+                  <span class="ss-icon ss-calendar"></span>
+                </div>
+
+                <span>Schedule</span>
+              </a>
+              <a
+                class="
+flex
+uppercase
+items-center
+font-medium
+leading5
+text-p8
+radius-pill
+text-h0
+mb-2
+mb-none-lg
+mr-0-lg
+pr1
+pl0
+bg-a3
+no-underline
+"
+                alt="Players"
+                href="/players">
+                <div class="icon-nav mr-2 f-p26">
+                  <span class="ss-icon ss-user"></span>
+                </div>
+
+                <span>Players</span>
+              </a>
+              <a
+                class="
+flex
+uppercase
+items-center
+font-medium
+leading5
+text-p8
+radius-pill
+text-h0
+mb-2
+mb-none-lg
+mr-0-lg
+pr1
+pl0
+bg-a3
+no-underline
+"
+                alt="Spares"
+                href="/players">
+                <div class="icon-nav mr-2 f-p26">
+                  <span class="ss-icon ss-plus"></span>
+                </div>
+
+                <span>Spares</span>
+              </a>
             </span>
           </nav>
           <span
