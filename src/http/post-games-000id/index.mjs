@@ -7,7 +7,7 @@ export const handler = arc.http.async(auth, http)
 
 async function http(req) {
   const id = req.pathParameters?.id
-  const game = { ...req.body, date: id }
+  const game = { ...req.body, gamedate: id }
   console.log(game)
 
   await upsertGame(game)

@@ -13,7 +13,7 @@
   --blue:#1f74d6;/* blue */
   --dark-blue:#134680;/* dark-blue */
   --green:#2cdd93;/* green */
-  --bg-gradient:linear-gradient(125deg, var(--orange), var(--magenta), var(--purple));/* bg-gradient */
+  --bg-gradient:linear-gradient(125deg, var(--blue), var(--dark-blue));/* bg-gradient */
 
   }
   
@@ -181,6 +181,12 @@ body {
 .border-b1{border-bottom-width:1px;}
 .border-l1{border-left-width:1px;}
 
+.border2{border-width:2px;}
+.border-t2{border-top-width:2px;}
+.border-r2{border-right-width:2px;}
+.border-b2{border-bottom-width:2px;}
+.border-l2{border-left-width:2px;}
+
 
 /* RADIUS */
 .radius-none{border-radius:0;}
@@ -199,7 +205,8 @@ body {
 .radius-l-none,
 .radius-bl-none{border-bottom-left-radius:0;}
 .radius0{border-radius:2px;}
-.radius1{border-radius:9999px;}
+.radius1{border-radius:4px;}
+.radius2{border-radius:9999px;}
 
 
 /* COLOR */

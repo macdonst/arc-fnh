@@ -32,12 +32,16 @@ players
   email *String
 
 games
-  date *String
+  gamedate *String
 
 @tables-indexes
 players
   fulltime *String
   name playersByFulltime
+
+games
+  gamedate *String
+  name gamesByDate
 
 
 @aws

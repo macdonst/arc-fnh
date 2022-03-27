@@ -4,7 +4,7 @@ import render from '@architect/views/render.mjs'
 import arcOauth from 'arc-plugin-oauth'
 const auth = arcOauth.auth
 
-const initialGame = { date: '', time: '', facility: '' }
+const initialGame = { gamedate: '', time: '', facility: '' }
 
 export const handler = arc.http.async(auth, games)
 
@@ -18,7 +18,7 @@ async function games(req) {
       `
     <hockey-page>
       <hockey-form action="/games">
-        <hockey-input id="date" label="Date" type="date" required="true" value="${game.date}"></hockey-input>
+        <hockey-input id="date" label="Date" type="date" required="true" value="${game.gamedate}"></hockey-input>
         <hockey-input id="time" label="Time" type="time" required="true" value="${game.time}"></hockey-input>
         <hockey-input id="facility" label="Facility" type="text" required="true" value="${game.facility}"></hockey-input>
       </hockey-form>

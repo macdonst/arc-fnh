@@ -8,6 +8,7 @@ export const handler = arc.http.async(auth, games)
 
 async function games(req) {
   const games = await getGames()
+  console.log(games)
   const initialState = { account: req.session?.account }
 
   return {
@@ -27,12 +28,12 @@ async function games(req) {
               .map(
                 (game) =>
                   `<tr>
-                    <td><a href="/games/add?id=${game.date}">${game.date}</a></td>
+                    <td><a href="/games/add?id=${game.date}">${game.gamedate}</a></td>
                     <td>${game.time}</td>
                     <td>${game.facility}</td>
                     <td>
                       <hockey-action-buttons>
-                        <hockey-action-button action="/games/${game.date}/delete" icon="delete"></hockey-action-button>
+                        <hockey-action-button action="/games/${game.gamedate}/delete" icon="delete"></hockey-action-button>
                       </hockey-action-buttons>
                     </td>
                   </tr>`

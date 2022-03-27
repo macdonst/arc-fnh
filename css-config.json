@@ -39,7 +39,7 @@
         "green": "#2cdd93"
       },
       {
-        "bg-gradient": "linear-gradient(125deg, var(--orange), var(--magenta), var(--purple))"
+        "bg-gradient": "linear-gradient(125deg, var(--blue), var(--dark-blue))"
       }
     ],
     "queries": {
@@ -47,11 +47,13 @@
     },
     "borders": {
       "widths": [
-        1
+        1,
+        2
       ]
     },
     "radii": [
       2,
+      4,
       9999
     ]
   }

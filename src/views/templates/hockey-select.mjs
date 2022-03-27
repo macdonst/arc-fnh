@@ -6,9 +6,6 @@ export default function HockeySelectTemplate({ html, state = {} }) {
     value = 'skater'
   } = state.attrs
 
-  console.log('HockeySelectTemplate')
-  console.log(state.attr)
-
   return html`
     <div>
       <label for="${id}" class="flex w-full flex-col gap-4">
@@ -16,7 +13,7 @@ export default function HockeySelectTemplate({ html, state = {} }) {
         <select
           name="${id}"
           required="${required}"
-          class="leading5-l pt-3 pb-3 pl-1 pr-1 border-gradient border1 radius0">
+          class="leading5-l pt-3 pb-3 pl-1 pr-1 border-gradient border1 radius1">
           <option value="skater" ${value === 'skater' ? 'selected' : ''}>
             Skater
           </option>
