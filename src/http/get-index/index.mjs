@@ -25,7 +25,13 @@ async function index(req) {
               <p class="mb1 fs0 fw-book c-p1">${dayOfWeek} ${month} ${date.getDate()} at ${
         next.facility
       }</p>
-              <p class="c-p1">Ok, now the best part: deploying to production</p>
+              <p class="c-p1">
+                <ul>
+                <li>Cancellations:</li>
+                <li>Spares:</li>
+                <li>Goalies:</li>
+                </ul>
+              </p>
             </div>
           </div>
         </hockey-page>

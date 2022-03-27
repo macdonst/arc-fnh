@@ -7,7 +7,7 @@ export default function HockeyActionButtonTemplate({ html, state = {} }) {
 
   let button = ''
   if (type === 'link') {
-    button = `<a href="${action}">${innerText}</a>`
+    button = `<a href="${action}" class="mr-1">${innerText}</a>`
   } else {
     button = `<form method="post" action="${action}" class="mr-1">
     <button>
