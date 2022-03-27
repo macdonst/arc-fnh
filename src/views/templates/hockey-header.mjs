@@ -164,7 +164,7 @@ no-underline
                 alt="Spares"
                 href="/players">
                 <div class="icon-nav mr-2 f-p26">
-                  <span class="ss-icon ss-plus"></span>
+                  <span class="ss-icon ss-users"></span>
                 </div>
 
                 <span>Spares</span>
