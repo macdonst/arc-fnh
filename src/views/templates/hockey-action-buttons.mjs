@@ -1,6 +1,7 @@
-export default function HockeyActionButtonsTemplate({ html }) {
+export default function HockeyActionButtonsTemplate({ html, state = {} }) {
+  const { direction = 'row' } = state.attrs
   return html`
-    <div class="flex">
+    <div class="flex flex-${direction}">
       <slot></slot>
     </div>
 

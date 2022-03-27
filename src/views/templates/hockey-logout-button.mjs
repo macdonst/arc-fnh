@@ -11,7 +11,7 @@ export default function HockeyLogoutButtonTemplate({ html }) {
         }
         connectedCallback() {}
       }
-      customElements.define('hockey-login-button', HockeyLogoutButton)
+      customElements.define('hockey-logout-button', HockeyLogoutButton)
     </script>
   `
 }

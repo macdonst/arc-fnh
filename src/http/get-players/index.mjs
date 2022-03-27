@@ -14,50 +14,36 @@ async function players(req) {
     html: render(
       `
     <hockey-page>
+      <hockey-action-buttons direction="row-reverse">
+        <hockey-action-button action="/players/add" icon="plus" label="Add" type="link"></hockey-action-button>
+      </hockey-action-buttons>
 
-    <hockey-table>
-      <table>
-        <thead>
-          <tr><th>Name</th><th>Email</th><th>Phone</th><th>Fulltime</th><th>Actions</th></tr>
-        </thead>
-        <tbody>
-          ${fulltimePlayers
-            .map(
-              (player) =>
-                `<tr>
-                <td>${player.name}</td>
-                <td>${player.email}</td>
-                <td>${player.phone}</td>
-                <td>${player.fulltime}</td>
-                <td>
-                  <hockey-action-buttons>
-                    <hockey-action-button action="/players/${player.email}" label="write"></hockey-action-button>
-                    <hockey-action-button action="/players/${player.email}/delete" label="delete"></hockey-action-button>
-                  </hockey-action-buttons>
-                </td>
-              </tr>`
-            )
-            .join('')}
-        </tbody>
-      </table>
-    </hockey-table>
-
-    <form action="/players" method="post">
-      <label for=name>name</label>
-      <input type=text name=name required>
-      <br/>
-      <label for=name>email</label>
-      <input type=text name=email required>
-      <br/>
-      <label for=name>phone</label>
-      <input type=text name=phone required>
-      <br/>
-      <label for=name>fulltime</label>
-      <input type="checkbox"name="fulltime">
-      <br/>
-
-      <button>save</button>
-    </form>
+      <hockey-table>
+        <table>
+          <thead>
+            <tr><th>Name</th><th>Email</th><th>Phone</th><th>Position</th><th>Actions</th></tr>
+          </thead>
+          <tbody>
+            ${fulltimePlayers
+              .map(
+                (player) =>
+                  `<tr>
+                  <td>${player.name}</td>
+                  <td>${player.email}</td>
+                  <td>${player.phone}</td>
+                  <td class="capitalize">${player.position}</td>
+                  <td>
+                    <hockey-action-buttons>
+                      <hockey-action-button action="/players/${player.email}" icon="write"></hockey-action-button>
+                      <hockey-action-button action="/players/${player.email}/delete" icon="delete"></hockey-action-button>
+                    </hockey-action-buttons>
+                  </td>
+                </tr>`
+              )
+              .join('')}
+          </tbody>
+        </table>
+      </hockey-table>
     </hockey-page>
 `,
       initialState

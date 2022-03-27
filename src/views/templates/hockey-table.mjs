@@ -4,6 +4,7 @@ export default function HockeyTableTemplate({ html }) {
       table {
         width: 100%;
         font-size: 16px;
+        margin: 10px 0px 10px 0px;
       }
       td,
       th {

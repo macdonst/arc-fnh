@@ -12,13 +12,9 @@ const deletePlayer = async function (id) {
 
 const upsertPlayer = async function (player) {
   const db = await arc.tables()
+  player.fulltime = player.fulltime === 'on' ? 'true' : 'false'
 
-  let result = await db.players.put({
-    email: player.email,
-    name: player.name,
-    phone: player.phone,
-    fulltime: player.fulltime === 'on' ? 'true' : 'false'
-  })
+  let result = await db.players.put(player)
 
   return result
 }
@@ -32,7 +28,17 @@ const getPlayers = async function (fulltime) {
     ExpressionAttributeValues: { ':fulltime': fulltime }
   })
 
-  return fulltimePlayers.Items
+  console.log(fulltimePlayers.Items)
+
+  return fulltimePlayers.Items.sort((a, b) => {
+    if (a.name < b.name) {
+      return -1
+    }
+    if (a.name > b.name) {
+      return 1
+    }
+    return 0
+  })
 }
 
 const getFulltimePlayers = async function () {

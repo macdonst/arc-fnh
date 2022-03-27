@@ -5,7 +5,7 @@ const getGames = async function () {
 
   let games = await db.games.scan()
 
-  return games.Items
+  return games.Items.sort((a, b) => new Date(a.date) - new Date(b.date))
 }
 
 const upsertGame = async function (game) {

@@ -9,10 +9,12 @@ folder public
 get /
 get /components/*
 get /players
+get /players/add
 post /players
 post /players/:id
 post /players/:id/delete
 get /games
+get /games/add
 post /games
 post /games/:id
 post /games/:id/delete
