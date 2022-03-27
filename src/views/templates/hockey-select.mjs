@@ -1,5 +1,14 @@
-export default function HockeyInputTemplate({ html, state = {} }) {
-  const { id = '', label = '', required = 'false' } = state.attrs
+export default function HockeySelectTemplate({ html, state = {} }) {
+  const {
+    id = '',
+    label = '',
+    required = 'false',
+    value = 'skater'
+  } = state.attrs
+
+  console.log('HockeySelectTemplate')
+  console.log(state.attr)
+
   return html`
     <div>
       <label for="${id}" class="flex w-full flex-col gap-4">
@@ -8,10 +17,18 @@ export default function HockeyInputTemplate({ html, state = {} }) {
           name="${id}"
           required="${required}"
           class="leading5-l pt-3 pb-3 pl-1 pr-1 border-gradient border1 radius0">
-          <option value="skater">Skater</option>
-          <option value="forward">Forward</option>
-          <option value="defence">Defence</option>
-          <option value="goalie">Goalie</option>
+          <option value="skater" ${value === 'skater' ? 'selected' : ''}>
+            Skater
+          </option>
+          <option value="forward" ${value === 'forward' ? 'selected' : ''}>
+            Forward
+          </option>
+          <option value="defence" ${value === 'defence' ? 'selected' : ''}>
+            Defence
+          </option>
+          <option value="goalie" ${value === 'goalie' ? 'selected' : ''}>
+            Goalie
+          </option>
         </select>
       </label>
     </div>

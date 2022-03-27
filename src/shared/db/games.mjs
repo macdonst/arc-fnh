@@ -1,5 +1,13 @@
 import arc from '@architect/functions'
 
+const getGame = async function (id) {
+  const db = await arc.tables()
+
+  let game = await db.games.get({ date: id })
+
+  return game
+}
+
 const getGames = async function () {
   const db = await arc.tables()
 
@@ -26,4 +34,4 @@ const deleteGame = async function (id) {
   return result
 }
 
-export { deleteGame, getGames, upsertGame }
+export { deleteGame, getGame, getGames, upsertGame }

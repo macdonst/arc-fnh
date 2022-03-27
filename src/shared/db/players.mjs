@@ -19,6 +19,14 @@ const upsertPlayer = async function (player) {
   return result
 }
 
+const getPlayer = async function (id) {
+  const db = await arc.tables()
+
+  let game = await db.players.get({ email: id })
+
+  return game
+}
+
 const getPlayers = async function (fulltime) {
   const db = await arc.tables()
 
@@ -47,4 +55,4 @@ const getSpares = async function () {
   return getPlayers('false')
 }
 
-export { deletePlayer, getFulltimePlayers, getSpares, upsertPlayer }
+export { deletePlayer, getPlayer, getFulltimePlayers, getSpares, upsertPlayer }

@@ -27,12 +27,11 @@ async function games(req) {
               .map(
                 (game) =>
                   `<tr>
-                    <td>${game.date}</td>
+                    <td><a href="/games/add?id=${game.date}">${game.date}</a></td>
                     <td>${game.time}</td>
                     <td>${game.facility}</td>
                     <td>
                       <hockey-action-buttons>
-                        <hockey-action-button action="/games/${game.date}" icon="write"></hockey-action-button>
                         <hockey-action-button action="/games/${game.date}/delete" icon="delete"></hockey-action-button>
                       </hockey-action-buttons>
                     </td>

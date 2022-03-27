@@ -31,13 +31,12 @@ async function players(req) {
               .map(
                 (player) =>
                   `<tr>
-                  <td>${player.name}</td>
+                  <td><a href="/players/add?id=${player.email}">${player.name}</a></td>
                   <td>${player.email}</td>
                   <td>${player.phone}</td>
                   <td class="capitalize">${player.position}</td>
                   <td>
                     <hockey-action-buttons>
-                      <hockey-action-button action="/players/${player.email}" icon="write"></hockey-action-button>
                       <hockey-action-button action="/players/${player.email}/delete" icon="delete"></hockey-action-button>
                     </hockey-action-buttons>
                   </td>
