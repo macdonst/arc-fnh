@@ -162,7 +162,7 @@ bg-a3
 no-underline
 "
                 alt="Spares"
-                href="/players">
+                href="/players?type=spares">
                 <div class="icon-nav mr-2 f-p26">
                   <span class="ss-icon ss-users"></span>
                 </div>

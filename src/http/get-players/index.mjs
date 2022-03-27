@@ -1,13 +1,16 @@
 import arc from '@architect/functions'
 import render from '@architect/views/render.mjs'
-import { getFulltimePlayers } from '@architect/shared/db/players.mjs'
+import { getFulltimePlayers, getSpares } from '@architect/shared/db/players.mjs'
 import arcOauth from 'arc-plugin-oauth'
 const auth = arcOauth.auth
 
 export const handler = arc.http.async(auth, players)
 
 async function players(req) {
-  const fulltimePlayers = await getFulltimePlayers()
+  console.log(req)
+  const { type = 'fulltime' } = req.query
+  const players =
+    type === 'fulltime' ? await getFulltimePlayers() : await getSpares()
   const initialState = { account: req.session?.account }
 
   return {
@@ -24,7 +27,7 @@ async function players(req) {
             <tr><th>Name</th><th>Email</th><th>Phone</th><th>Position</th><th>Actions</th></tr>
           </thead>
           <tbody>
-            ${fulltimePlayers
+            ${players
               .map(
                 (player) =>
                   `<tr>

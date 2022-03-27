@@ -28,8 +28,6 @@ const getPlayers = async function (fulltime) {
     ExpressionAttributeValues: { ':fulltime': fulltime }
   })
 
-  console.log(fulltimePlayers.Items)
-
   return fulltimePlayers.Items.sort((a, b) => {
     if (a.name < b.name) {
       return -1
