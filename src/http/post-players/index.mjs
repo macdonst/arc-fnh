@@ -6,7 +6,6 @@ const auth = arcOauth.auth
 export const handler = arc.http.async(auth, http)
 
 async function http(req) {
-  console.log(req.body)
   await upsertPlayer(req.body)
 
   return {

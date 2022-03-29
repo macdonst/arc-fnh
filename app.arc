@@ -15,6 +15,7 @@ post /players/:id
 post /players/:id/delete
 get /games
 get /games/add
+get /games/:id
 post /games
 post /games/:id
 post /games/:id/delete

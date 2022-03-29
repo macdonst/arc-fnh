@@ -48,6 +48,9 @@ export default function Document(body = '') {
       .max-w-form {
         max-width: 21.78rem;
       }
+      .strikethrough {
+        text-decoration: line-through
+      }
     </style>
     </head>
     <body class="font-sans">

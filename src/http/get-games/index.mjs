@@ -8,7 +8,6 @@ export const handler = arc.http.async(auth, games)
 
 async function games(req) {
   const games = await getGames()
-  console.log(games)
   const initialState = { account: req.session?.account }
 
   return {

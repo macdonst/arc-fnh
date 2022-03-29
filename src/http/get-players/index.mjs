@@ -7,7 +7,6 @@ const auth = arcOauth.auth
 export const handler = arc.http.async(auth, players)
 
 async function players(req) {
-  console.log(req)
   const { type = 'fulltime' } = req.query
   const players =
     type === 'fulltime' ? await getFulltimePlayers() : await getSpares()

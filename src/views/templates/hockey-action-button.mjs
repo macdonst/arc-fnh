@@ -10,6 +10,7 @@ export default function HockeyActionButtonTemplate({ html, state = {} }) {
     button = `<a href="${action}" class="mr-1">${innerText}</a>`
   } else {
     button = `<form method="post" action="${action}" class="mr-1">
+    <slot></slot>
     <button>
       ${innerText}
     </button>

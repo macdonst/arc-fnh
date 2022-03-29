@@ -12,7 +12,8 @@ const deletePlayer = async function (id) {
 
 const upsertPlayer = async function (player) {
   const db = await arc.tables()
-  player.fulltime = player.fulltime === 'on' ? 'true' : 'false'
+  player.fulltime =
+    player.fulltime === 'on' || player.fulltime === 'true' ? 'true' : 'false'
 
   let result = await db.players.put(player)
 

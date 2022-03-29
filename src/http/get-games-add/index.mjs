@@ -18,7 +18,7 @@ async function games(req) {
       `
     <hockey-page>
       <hockey-form action="/games">
-        <hockey-input id="date" label="Date" type="date" required="true" value="${game.gamedate}"></hockey-input>
+        <hockey-input id="gamedate" label="Date" type="date" required="true" value="${game.gamedate}"></hockey-input>
         <hockey-input id="time" label="Time" type="time" required="true" value="${game.time}"></hockey-input>
         <hockey-input id="facility" label="Facility" type="text" required="true" value="${game.facility}"></hockey-input>
       </hockey-form>
