@@ -4,11 +4,7 @@ export default function HockeyFormTemplate({ html, state = {} }) {
     <div class="p-6">
       <form class="flex flex-col gap-1" action="${action}" method="post">
         <slot></slot>
-        <div class="text-right">
-          <button class="bg-blue color-white pt-1 pb-1 pr0 pl0 radius1">
-            Save
-          </button>
-        </div>
+        <hockey-save-button></hockey-save-button>
       </form>
     </div>
 

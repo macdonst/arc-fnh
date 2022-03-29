@@ -21,54 +21,52 @@ async function gameStatus(req) {
   const spares = await getSpares()
   console.log(spares)
 
+  // change this entire thing to one giant form.
+  // submit the whole thing in one shot
+  //
+  // player name with hidden player email input, checkbox to see if they are playing,
+  // select box for the spare if they can't make it
+  // one save button at the bottom
+
   return {
     html: render(
       `
     <hockey-page>
       <div>
         <span>${dayOfWeek} ${month} ${date.getDate()} at ${game.facility}</span>
-        <hockey-action-buttons direction="row-reverse">
-          <hockey-action-button action="/players/add" icon="plus" label="Add" type="link"></hockey-action-button>
-        </hockey-action-buttons>
       </div>
-      <hockey-table>
-        <table>
-          <thead>
-            <tr><th>Name</th><th>Position</th><th>Actions</th></tr>
-          </thead>
-          <tbody>
-            ${[...skaters, ...goalies]
-              .map(
-                (player) =>
-                  `<tr>
-                  <td class="${
-                    game?.cancellations.includes(player.email)
-                      ? 'strikethrough'
-                      : ''
-                  }">${player.name}</td>
-                  <td class="capitalize">${player.position}</td>
-                  <td>
-                    <hockey-action-buttons>
-                      <hockey-action-button action="/games/${id}" icon="check">
-                        <input type="hidden" name="player" value="${
-                          player.email
-                        }"/>
-                        <input type="hidden" name="action" value="attend"/>
-                      </hockey-action-button>
-                      <hockey-action-button action="/games/${id}" icon="hyphen">
-                        <input type="hidden" name="player" value="${
-                          player.email
-                        }"/>
-                        <input type="hidden" name="action" value="skip"/>
-                      </hockey-action-button>
-                    </hockey-action-buttons>
-                  </td>
-                </tr>`
-              )
-              .join('')}
-          </tbody>
-        </table>
-      </hockey-table>
+      <form form method="post" action="/games/${id}">
+        <hockey-table>
+          <table>
+            <thead>
+              <tr><th>Name</th><th>Position</th><th>Away</th><th>Spare</th></tr>
+            </thead>
+            <tbody>
+              ${[...skaters, ...goalies]
+                .map(function (player) {
+                  const cancelled = game.cancellations?.includes(player.email)
+                  return `<tr>
+                    <td class="${cancelled ? 'strikethrough' : ''}">
+                      ${player.name}
+                    </td>
+                    <td class="capitalize">
+                      ${player.position}
+                    </td>
+                    <td>
+                      <input type="checkbox" name="cancellations" value="${
+                        player.email
+                      }" ${cancelled ? 'checked' : ''}/>
+                    </td>
+                    <td></td>
+                  </tr>`
+                })
+                .join('')}
+            </tbody>
+          </table>
+          <hockey-save-button></hockey-save-button>
+        </hockey-table>
+      <form>
+
     </hockey-page>
 `,
       initialState

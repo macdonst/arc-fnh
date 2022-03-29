@@ -8,6 +8,7 @@ import HockeyActionButtonTemplate from './templates/hockey-action-button.mjs'
 import HockeyInputTemplate from './templates/hockey-input.mjs'
 import HockeySelectTemplate from './templates/hockey-select.mjs'
 import HockeyFormTemplate from './templates/hockey-form.mjs'
+import HockeySaveButtonTemplate from './templates/hockey-save-button.mjs'
 
 export default {
   'hockey-header': HockeyHeaderTemplate,
@@ -19,5 +20,6 @@ export default {
   'hockey-action-button': HockeyActionButtonTemplate,
   'hockey-input': HockeyInputTemplate,
   'hockey-select': HockeySelectTemplate,
-  'hockey-form': HockeyFormTemplate
+  'hockey-form': HockeyFormTemplate,
+  'hockey-save-button': HockeySaveButtonTemplate
 }
