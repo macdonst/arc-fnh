@@ -43,9 +43,9 @@ async function gameStatus(req) {
     html: render(
       `
     <hockey-page>
-      <div>
-        <span>${dayOfWeek} ${month} ${date.getDate()} at ${game.facility}</span>
-      </div>
+      <h1 class="mb-3 fw-medium fs1 c-p1 text1 color-darkest">${dayOfWeek} ${month} ${date.getDate()} at ${
+        game.facility
+      }</h1>
       <form form method="post" action="/games/${id}">
         <hockey-table>
           <table>

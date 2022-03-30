@@ -28,7 +28,10 @@ export default function Document(body = '') {
         background-color: var(--blue);
       }
       .bg-light {
-        background-color: var(--light);
+        background-color: var(--grey0);
+      }
+      .bg-lighter {
+        background-color: var(--grey-1);
       }
       .color-hover-white:hover {
         color: var(--white);
@@ -42,8 +45,17 @@ export default function Document(body = '') {
       .color-white {
         color: var(--white);
       }
+      .color-darkest {
+        color: var(--grey8)
+      }
+      .color-dark {
+        color: var(--grey7)
+      }
       .border-gradient {
         border-color: var(--blue);
+      }
+      .border-dark {
+        border-color: var(--grey3);
       }
       .max-w-form {
         max-width: 21.78rem;
@@ -53,7 +65,7 @@ export default function Document(body = '') {
       }
     </style>
     </head>
-    <body class="font-sans">
+    <body class="font-sans color-dark bg-light">
     ${Symbols}
     ${body}
     </body>

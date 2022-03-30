@@ -5,6 +5,16 @@ export default function HockeyTableTemplate({ html }) {
         width: 100%;
         font-size: 16px;
         margin: 10px 0px 10px 0px;
+        background-color: var(--grey-2);
+      }
+      thead {
+        border-width: 2px;
+        border-color: var(--dark-blue);
+      }
+      tbody {
+        border-radius: 4px;
+        border-width: 2px;
+        border-color: var(--grey3);
       }
       td,
       th {
@@ -14,7 +24,7 @@ export default function HockeyTableTemplate({ html }) {
       }
 
       tbody tr:nth-child(2n) {
-        background-color: var(--light);
+        background-color: var(--grey1);
       }
 
       th {

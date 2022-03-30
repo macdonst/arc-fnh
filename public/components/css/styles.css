@@ -3,7 +3,18 @@
 
   /* CUSTOM PROPERTIES */
   :root {
-    --white:#ffffff;/* white */
+    --grey-2:#ffffff;/* grey-2 */
+  --grey-1:#fafafa;/* grey-1 */
+  --grey0:#f5f5f5;/* grey0 */
+  --grey1:#eaeaea;/* grey1 */
+  --grey2:#e1e1e1;/* grey2 */
+  --grey3:#cacaca;/* grey3 */
+  --grey4:#b3b3b3;/* grey4 */
+  --grey5:#8e8e8e;/* grey5 */
+  --grey6:#6e6e6e;/* grey6 */
+  --grey7:#4b4b4b;/* grey7 */
+  --grey8:#2c2c2c;/* grey8 */
+  --white:#ffffff;/* white */
   --light:#efefef;/* light */
   --dark:#222222;/* dark */
   --orange:#ff6263;/* orange */

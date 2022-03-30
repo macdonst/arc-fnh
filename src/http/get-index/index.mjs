@@ -49,20 +49,27 @@ async function index(req) {
     html: render(
       `
         <hockey-page>
-          <div class="flex flex-row p2 bg-gradient color-white radius1">
+          <div class="flex flex-row p2 radius1 border2 border-dark bg-lighter">
             <h1 class="fz2 mr0 whitespace-nowrap">🏒</h1>
             <div>
-              <h1 class="mb-3 fw-medium fs1 c-p1 text1">Next Game</h1>
-              <p class="mb1 fs0 fw-book c-p1"><a href="/games/${
-                next.gamedate
-              }">${dayOfWeek} ${month} ${date.getDate()} at ${
-        next.facility
-      }</a></p>
+              <h1 class="mb-2 fw-medium fs1 c-p1 text1 color-darkest">Next Game</h1>
+              <p class="mb1 fs0 fw-book c-p1">
+                <a href="/games/${
+                  next.gamedate
+                }">${dayOfWeek} ${month} ${date.getDate()} at ${next.facility}
+                </a>
+              </p>
               <p class="c-p1">
-                <ul>
-                <li>Cancellations: ${listPlayers(cancellations)}</li>
-                <li>Spares: ${listPlayers(spares)}</li>
-                <li>Goalies: ${listPlayers(goalies)}</li>
+                <ul class="list-none">
+                <li class="mb-3"><span class="font-semibold">Cancellations:</span> ${listPlayers(
+                  cancellations
+                )}</li>
+                <li class="mb-3"><span class="font-semibold">Spares:</span> ${listPlayers(
+                  spares
+                )}</li>
+                <li class="mb-3"><span class="font-semibold">Goalies:</span> ${listPlayers(
+                  goalies
+                )}</li>
                 </ul>
               </p>
             </div>

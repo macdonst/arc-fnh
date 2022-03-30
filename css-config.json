@@ -9,6 +9,39 @@
     },
     "properties": [
       {
+        "grey-2": "#ffffff"
+      },
+      {
+        "grey-1": "#fafafa"
+      },
+      {
+        "grey0": "#f5f5f5"
+      },
+      {
+        "grey1": "#eaeaea"
+      },
+      {
+        "grey2": "#e1e1e1"
+      },
+      {
+        "grey3": "#cacaca"
+      },
+      {
+        "grey4": "#b3b3b3"
+      },
+      {
+        "grey5": "#8e8e8e"
+      },
+      {
+        "grey6": "#6e6e6e"
+      },
+      {
+        "grey7": "#4b4b4b"
+      },
+      {
+        "grey8": "#2c2c2c"
+      },
+      {
         "white": "#ffffff"
       },
       {
