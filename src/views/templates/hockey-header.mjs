@@ -41,6 +41,7 @@ export default function HockeyHeaderTemplate({ html, state = {} }) {
             aria-label="Friday Night Hockey"
             href="/"
             class="
+        flex
         mr2
         text-g0
         text-h0
@@ -48,7 +49,10 @@ export default function HockeyHeaderTemplate({ html, state = {} }) {
         items-center
         cursor-pointer
       ">
-            🏒 Friday Night Hockey
+            <svg style="width: 1.5rem; height: 1.5rem;" class="mr-2">
+              <use xlink:href="#hockey"></use>
+            </svg>
+            Friday Night Hockey
           </a>
           <nav
             class="
@@ -89,7 +93,7 @@ export default function HockeyHeaderTemplate({ html, state = {} }) {
               class="
          flex-lg
          flex-grow
-         justify-between
+         justify-center
         ">
               <a
                 class="

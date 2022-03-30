@@ -17,7 +17,7 @@ async function players(req) {
       `
     <hockey-page>
       <hockey-action-buttons direction="row-reverse">
-        <hockey-action-button action="/players/add" icon="plus" label="Add" type="link"></hockey-action-button>
+        <hockey-action-button action="/players/add" icon="plus" label="Add" type="link" variant="default"></hockey-action-button>
       </hockey-action-buttons>
 
       <hockey-table>
