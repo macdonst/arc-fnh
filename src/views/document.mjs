@@ -8,7 +8,6 @@ export default function Document(body = '') {
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="stylesheet" href="/components/css/styles.css"/>
-      <link rel="stylesheet" href="/components/css/ss-standard.css"/>
       <style>
       .bg-gradient {
         background-image: var(--bg-gradient)

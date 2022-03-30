@@ -116,7 +116,9 @@ no-underline
                 alt="Games"
                 href="/games">
                 <div class="icon-nav mr-2 f-p26">
-                  <span class="ss-icon ss-calendar"></span>
+                  <svg style="width: 1rem; height: 1rem;">
+                    <use xlink:href="#calendar"></use>
+                  </svg>
                 </div>
 
                 <span>Schedule</span>
@@ -142,9 +144,10 @@ no-underline
                 alt="Players"
                 href="/players">
                 <div class="icon-nav mr-2 f-p26">
-                  <span class="ss-icon ss-user"></span>
+                  <svg style="width: 1rem; height: 1rem;">
+                    <use xlink:href="#user"></use>
+                  </svg>
                 </div>
-
                 <span>Players</span>
               </a>
               <a
@@ -168,7 +171,9 @@ no-underline
                 alt="Spares"
                 href="/players?type=spares">
                 <div class="icon-nav mr-2 f-p26">
-                  <span class="ss-icon ss-users"></span>
+                  <svg style="width: 1rem; height: 1rem;">
+                    <use xlink:href="#users"></use>
+                  </svg>
                 </div>
 
                 <span>Spares</span>
