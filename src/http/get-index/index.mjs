@@ -1,6 +1,6 @@
 import arc from '@architect/functions'
 import { getNextGame } from '@architect/shared/db/games.mjs'
-import { getPlayer } from '@architect/shared/db/players.mjs'
+import { getPlayer, getFulltimePlayers } from '@architect/shared/db/players.mjs'
 import render from '@architect/views/render.mjs'
 import arcOauth from 'arc-plugin-oauth'
 const auth = arcOauth.auth
@@ -11,17 +11,43 @@ async function getCancellations(cancellations = []) {
   return Promise.all(cancellations.map((player) => getPlayer(player)))
 }
 
+async function getSpares(spares = []) {
+  return Promise.all(spares.map((player) => getPlayer(player)))
+}
+
+async function getGoalies(cancellations = [], spares = []) {
+  const players = await getFulltimePlayers()
+  const goalies = players.filter(
+    (player) =>
+      player.position === 'goalie' && !cancellations.includes(player.email)
+  )
+  spares.forEach(function (spare) {
+    if (spare?.position === 'goalie') {
+      goalies.push(spare)
+    }
+  })
+  return goalies
+}
+
+function listPlayers(players = []) {
+  console.log(players)
+  return players
+    .filter((player) => player !== undefined)
+    .map((player) => player?.name)
+    .join(', ')
+}
+
 async function index(req) {
   const initialState = { account: req.session?.account }
 
   const next = await getNextGame()
-  console.log(next)
   const date = new Date(next.gamedate)
   const dayOfWeek = date.toLocaleDateString('en-US', { weekday: 'long' })
   const month = date.toLocaleDateString('en-US', { month: 'long' })
 
   const cancellations = await getCancellations(next.cancellations)
-  // const goalies = await getGoalies(next.cancellations)
+  const spares = await getSpares(next.spares)
+  const goalies = await getGoalies(next.cancellations, spares)
 
   return {
     html: render(
@@ -38,11 +64,9 @@ async function index(req) {
       }</a></p>
               <p class="c-p1">
                 <ul>
-                <li>Cancellations: ${cancellations
-                  .map((player) => player.name)
-                  .join(', ')}</li>
-                <li>Spares:</li>
-                <li>Goalies:</li>
+                <li>Cancellations: ${listPlayers(cancellations)}</li>
+                <li>Spares: ${listPlayers(spares)}</li>
+                <li>Goalies: ${listPlayers(goalies)}</li>
                 </ul>
               </p>
             </div>

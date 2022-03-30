@@ -7,6 +7,23 @@ const auth = arcOauth.auth
 
 export const handler = arc.http.async(auth, gameStatus)
 
+function createSelectBox(spares, currentSpare) {
+  return `<select name="spares">
+      <option value="none" ${
+        currentSpare === 'none' ? 'selected' : ''
+      }>No Spare</option>
+      ${spares
+        .map(
+          (spare) =>
+            `<option value="${spare.email}" ${
+              currentSpare === spare.email ? 'selected' : ''
+            }>${spare.name}</option>`
+        )
+        .join('')}
+    </select>
+  `
+}
+
 async function gameStatus(req) {
   const initialState = { account: req.session?.account }
   const id = req.pathParameters?.id
@@ -19,14 +36,8 @@ async function gameStatus(req) {
   const skaters = players.filter((player) => player.position !== 'goalie')
   const goalies = players.filter((player) => player.position === 'goalie')
   const spares = await getSpares()
-  console.log(spares)
-
-  // change this entire thing to one giant form.
-  // submit the whole thing in one shot
-  //
-  // player name with hidden player email input, checkbox to see if they are playing,
-  // select box for the spare if they can't make it
-  // one save button at the bottom
+  const spareSkaters = spares.filter((player) => player.position !== 'goalie')
+  const spareGoalies = spares.filter((player) => player.position === 'goalie')
 
   return {
     html: render(
@@ -45,6 +56,7 @@ async function gameStatus(req) {
               ${[...skaters, ...goalies]
                 .map(function (player) {
                   const cancelled = game.cancellations?.includes(player.email)
+                  const spare = cancelled ? game.spares?.shift() : ''
                   return `<tr>
                     <td class="${cancelled ? 'strikethrough' : ''}">
                       ${player.name}
@@ -57,7 +69,18 @@ async function gameStatus(req) {
                         player.email
                       }" ${cancelled ? 'checked' : ''}/>
                     </td>
-                    <td></td>
+                    <td>
+                      ${
+                        cancelled && player.position !== 'goalie'
+                          ? createSelectBox(spareSkaters, spare)
+                          : ''
+                      }
+                      ${
+                        cancelled && player.position === 'goalie'
+                          ? createSelectBox(spareGoalies, spare)
+                          : ''
+                      }
+                    </td>
                   </tr>`
                 })
                 .join('')}
