@@ -50,7 +50,7 @@ async function index(req) {
       `
         <hockey-page>
           <div class="flex flex-row p2 radius1 border2 border-dark bg-lighter">
-            <h1 class="fz2 mr0 whitespace-nowrap">🏒</h1>
+            <hockey-circular-icon icon="hockey"></hockey-circular-icon>
             <div>
               <h1 class="mb-2 fw-medium fs1 c-p1 text1 color-darkest">Next Game</h1>
               <p class="mb1 fs0 fw-book c-p1">

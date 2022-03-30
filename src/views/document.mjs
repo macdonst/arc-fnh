@@ -27,6 +27,10 @@ export default function Document(body = '') {
       .bg-blue:active {
         background-color: var(--blue);
       }
+      .bg-lightblue,
+      .bg-lightblue:active {
+        background-color: var(--light-blue);
+      }
       .bg-light {
         background-color: var(--grey0);
       }
@@ -62,6 +66,10 @@ export default function Document(body = '') {
       }
       .strikethrough {
         text-decoration: line-through
+      }
+      .icon {
+          height: 4rem;
+          width: 4rem;
       }
     </style>
     </head>
