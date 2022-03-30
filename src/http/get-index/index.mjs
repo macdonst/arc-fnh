@@ -7,12 +7,8 @@ const auth = arcOauth.auth
 
 export const handler = arc.http.async(auth, index)
 
-async function getCancellations(cancellations = []) {
-  return Promise.all(cancellations.map((player) => getPlayer(player)))
-}
-
-async function getSpares(spares = []) {
-  return Promise.all(spares.map((player) => getPlayer(player)))
+async function getPlayerInfo(players = []) {
+  return Promise.all(players.map((player) => getPlayer(player)))
 }
 
 async function getGoalies(cancellations = [], spares = []) {
@@ -45,8 +41,8 @@ async function index(req) {
   const dayOfWeek = date.toLocaleDateString('en-US', { weekday: 'long' })
   const month = date.toLocaleDateString('en-US', { month: 'long' })
 
-  const cancellations = await getCancellations(next.cancellations)
-  const spares = await getSpares(next.spares)
+  const cancellations = await getPlayerInfo(next.cancellations)
+  const spares = await getPlayerInfo(next.spares)
   const goalies = await getGoalies(next.cancellations, spares)
 
   return {
