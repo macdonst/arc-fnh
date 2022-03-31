@@ -36,6 +36,9 @@ export default function Document(body = '') {
       .bg-lighter {
         background-color: var(--grey-1);
       }
+      .bg-hover-lightest:hover {
+        background-color: var(--grey-2);
+      }
       .color-hover-white:hover {
         color: var(--white);
       }
@@ -48,11 +51,22 @@ export default function Document(body = '') {
       .color-white {
         color: var(--white);
       }
-      .color-darkest {
+      .color-fill-white {
+        fill: var(--white);
+      }
+      .color-darkest,
+      .color-hover-darkest:hover {
         color: var(--grey8)
+      }
+      .color-fill-darkest,
+      .color-fill-darkest:hover {
+        fill: var(--grey8);
       }
       .color-dark {
         color: var(--grey7)
+      }
+      .color-fill-dark {
+        fill: var(--grey7);
       }
       .border-gradient {
         border-color: var(--blue);

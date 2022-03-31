@@ -115,8 +115,10 @@ no-underline
 "
                 alt="Games"
                 href="/games">
-                <div class="icon-nav mr-2 f-p26">
-                  <svg style="width: 1rem; height: 1rem;">
+                <div class="mr-2">
+                  <svg
+                    style="width: 1rem; height: 1rem;"
+                    class="color-fill-white">
                     <use xlink:href="#calendar"></use>
                   </svg>
                 </div>
@@ -143,8 +145,10 @@ no-underline
 "
                 alt="Players"
                 href="/players">
-                <div class="icon-nav mr-2 f-p26">
-                  <svg style="width: 1rem; height: 1rem;">
+                <div class="mr-2">
+                  <svg
+                    style="width: 1rem; height: 1rem;"
+                    class="color-fill-white">
                     <use xlink:href="#user"></use>
                   </svg>
                 </div>
@@ -170,8 +174,10 @@ no-underline
 "
                 alt="Spares"
                 href="/players?type=spares">
-                <div class="icon-nav mr-2 f-p26">
-                  <svg style="width: 1rem; height: 1rem;">
+                <div class="mr-2">
+                  <svg
+                    style="width: 1rem; height: 1rem;"
+                    class="color-fill-white">
                     <use xlink:href="#users"></use>
                   </svg>
                 </div>
