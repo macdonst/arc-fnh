@@ -7,7 +7,11 @@ export default function HockeyActionButtonTemplate({ html, state = {} }) {
     variant = 'quiet'
   } = state.attrs
   const innerText = `${
-    icon !== '' ? `<span class="ss-icon ss-${icon}"></span>` : ``
+    icon !== ''
+      ? `<svg style="width: 1.5rem; height: 1.5rem;" class="mr-2 inline-block">
+          <use xlink:href="#${icon}"></use>
+         </svg>`
+      : ``
   }
   ${
     label !== ''
@@ -19,7 +23,7 @@ export default function HockeyActionButtonTemplate({ html, state = {} }) {
   if (type === 'link') {
     button = `<a href="${action}" class="mr-1 ${
       variant !== 'quiet'
-        ? 'radius1 border2 border-dark bg-light pt-2 pb-2 pl-2 pr-2'
+        ? 'radius1 border2 border-dark bg-lighter pt-2 pb-2 pl-2 pr-2 inline-flex justify-center'
         : ''
     }">${innerText}</a>`
   } else {
