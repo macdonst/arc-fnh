@@ -109,11 +109,18 @@ export default function Document(body = '') {
         border-color: var(--dark-blue);
         background-color: var(--dark-blue);
       }
+      .menu-open {
+        top: 2.8rem;
+      }
+      .menu-closed {
+        top: -20rem;
+      }
     </style>
     </head>
     <body class="font-sans color-dark bg-light">
     ${Symbols}
     ${body}
+    <script src="/components/js/index.js"/>
     </body>
   </html>
     `

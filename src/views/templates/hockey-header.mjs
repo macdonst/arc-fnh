@@ -88,6 +88,7 @@ export default function HockeyHeaderTemplate({ html, state = {} }) {
         menu-closed
         z-1
         z0-lg
+        bg-blue
       ">
             <span
               class="
@@ -191,7 +192,6 @@ no-underline
        flex
        justify-end
        flex-grow
-       mb0
        mb-none-lg
      ">
             ${btn}
@@ -216,7 +216,9 @@ no-underline
         cursor-pointer
         bg-p0
       ">
-            Add an icon here
+            <svg style="width: 1rem; height: 1rem;" class="color-fill-white">
+              <use xlink:href="#hamburger"></use>
+            </svg>
           </button>
         </div>
         <div
@@ -235,8 +237,29 @@ no-underline
       class HockeyHeader extends HTMLElement {
         constructor() {
           super()
+          this.menu = this.querySelector('.js-menu')
+          this.navUL = this.querySelector('.js-nav')
+          this.toggleMenu = this.toggleMenu.bind(this)
+          this.handleClickOutsideMenu = this.handleClickOutsideMenu.bind(this)
+          this.menu.addEventListener('click', this.toggleMenu)
+          document.addEventListener('click', this.handleClickOutsideMenu)
         }
-        connectedCallback() {}
+        disconnectedCallback() {
+          document.removeEventListener(this.handleClickOutsideMenu)
+        }
+        toggleMenu(e) {
+          this.navUL.classList.toggle('menu-open')
+          this.navUL.classList.toggle('menu-closed')
+        }
+        handleClickOutsideMenu(e) {
+          if (
+            this.navUL.classList.contains('menu-open') &&
+            !this.menu.contains(e.target)
+          ) {
+            this.navUL.classList.remove('menu-open')
+            this.navUL.classList.add('menu-closed')
+          }
+        }
       }
       customElements.define('hockey-header', HockeyHeader)
     </script>
