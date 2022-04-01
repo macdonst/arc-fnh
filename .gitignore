@@ -134,3 +134,7 @@ sandbox-seed.js
 
 # arc project files
 preferences.arc
+
+# AWS deploy files
+sam.json
+sam.yaml
