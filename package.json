@@ -10,21 +10,21 @@
         "test:unit": "tape 'test/**/*.js' | tap-arc"
     },
     "devDependencies": {
-        "@architect/architect": "^10.1.0",
+        "@architect/architect": "^10.2.1",
         "@architect/eslint-config": "^2.0.1",
         "eslint": "^8.11.0",
         "eslint-config-prettier": "^8.5.0",
         "eslint-plugin-prettier": "^4.0.0",
         "prettier": "^2.6.0",
         "prettier-eslint": "^13.0.0",
-        "tap-arc": "^0.1.2",
+        "tap-arc": "^0.3.4",
         "tape": "^5.5.2"
     },
     "dependencies": {
         "@architect/functions": "^5.0.4",
         "@enhance/ssr": "^2.0.3",
         "@enhance/styles": "^1.0.0",
-        "arc-plugin-oauth": "^0.0.12"
+        "arc-plugin-oauth": "^0.0.15"
     },
     "eslintConfig": {
         "extends": [
