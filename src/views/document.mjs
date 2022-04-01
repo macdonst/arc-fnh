@@ -84,6 +84,31 @@ export default function Document(body = '') {
           height: 4rem;
           width: 4rem;
       }
+      .fancy-select {
+        appearance: none;
+        background-image: linear-gradient(var(--grey7), var(--grey7)),
+            linear-gradient(-135deg, transparent 50%, var(--light-blue) 50%),
+            linear-gradient(-225deg, transparent 50%, var(--light-blue) 50%),
+            linear-gradient(var(--light-blue) 42%, var(--dark-blue) 42%);
+        background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+        background-size: 1px 100%, 20px 22px, 20px 22px, 20px 100%;
+        background-position: right 20px center, right bottom, right bottom, right bottom;
+      }
+      .fancy-select:hover {
+        background-image: linear-gradient(var(--dark-blue), var(--dark-blue)),
+            linear-gradient(-135deg, transparent 50%, var(--dark-blue) 50%),
+            linear-gradient(-225deg, transparent 50%, var(--dark-blue) 50%),
+            linear-gradient(var(--dark-blue) 42%, var(--light-blue) 42%);
+      }
+      .fancy-select:active {
+        background-image: linear-gradient(var(--dark-blue), var(--dark-blue)),
+            linear-gradient(-135deg, transparent 50%, var(--dark-blue) 50%),
+            linear-gradient(-225deg, transparent 50%, var(--dark-blue) 50%),
+            linear-gradient(var(--dark-blue) 42%, var(--light-blue) 42%);
+        color: var(--light-blue);
+        border-color: var(--dark-blue);
+        background-color: var(--dark-blue);
+      }
     </style>
     </head>
     <body class="font-sans color-dark bg-light">

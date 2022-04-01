@@ -8,7 +8,7 @@ const auth = arcOauth.auth
 export const handler = arc.http.async(auth, gameStatus)
 
 function createSelectBox(spares, currentSpare) {
-  return `<select name="spares">
+  return `<select name="spares" class="leading5-l pt-3 pb-3 pl-1 pr2 border-gradient border1 radius1 fancy-select">
       <option value="none" ${
         currentSpare === 'none' ? 'selected' : ''
       }>No Spare</option>

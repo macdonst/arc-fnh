@@ -13,7 +13,7 @@ export default function HockeySelectTemplate({ html, state = {} }) {
         <select
           name="${id}"
           required="${required}"
-          class="leading5-l pt-3 pb-3 pl-1 pr-1 border-gradient border1 radius1">
+          class="leading5-l pt-3 pb-3 pl-1 pr2 border-gradient border1 radius1 fancy-select">
           <option value="skater" ${value === 'skater' ? 'selected' : ''}>
             Skater
           </option>
