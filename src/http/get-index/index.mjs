@@ -37,6 +37,21 @@ async function index(req) {
   const initialState = { account: req.session?.account }
 
   const next = await getNextGame()
+  // Rare case where we have no next game
+  if (!next) {
+    return {
+      html: render(
+        `
+          <hockey-page>
+            <hockey-content-card>
+              <h1 slot="header" class="mb-2 fw-medium fs1 c-p1 text1 color-darkest">No Next Game Scheduled 😢</h1>
+            </hockey-content-card>
+          </hockey-page>
+        `,
+        initialState
+      )
+    }
+  }
   const date = new Date(next.gamedate)
   const dayOfWeek = date.toLocaleDateString('en-US', { weekday: 'long' })
   const month = date.toLocaleDateString('en-US', { month: 'long' })
@@ -49,10 +64,9 @@ async function index(req) {
     html: render(
       `
         <hockey-page>
-          <div class="flex flex-row p2 radius1 border2 border-dark bg-lighter">
-            <hockey-circular-icon icon="hockey"></hockey-circular-icon>
-            <div>
-              <h1 class="mb-2 fw-medium fs1 c-p1 text1 color-darkest">Next Game</h1>
+          <hockey-content-card>
+            <h1 slot="header" class="mb-2 fw-medium fs1 c-p1 text1 color-darkest">Next Game</h1>
+            <div slot="content">
               <p class="mb1 fs0 fw-book c-p1">
                 <a href="/games/${
                   next.gamedate
@@ -73,7 +87,7 @@ async function index(req) {
                 </ul>
               </p>
             </div>
-          </div>
+          </hockey-content-card>
         </hockey-page>
       `,
       initialState

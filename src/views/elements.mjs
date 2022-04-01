@@ -10,6 +10,7 @@ import HockeySelectTemplate from './templates/hockey-select.mjs'
 import HockeyFormTemplate from './templates/hockey-form.mjs'
 import HockeySaveButtonTemplate from './templates/hockey-save-button.mjs'
 import HockeyCircularIconTemplate from './templates/hockey-circular-icon.mjs'
+import HockeyContentCardTemplate from './templates/hockey-content-card.mjs'
 
 export default {
   'hockey-header': HockeyHeaderTemplate,
@@ -23,5 +24,6 @@ export default {
   'hockey-select': HockeySelectTemplate,
   'hockey-form': HockeyFormTemplate,
   'hockey-save-button': HockeySaveButtonTemplate,
-  'hockey-circular-icon': HockeyCircularIconTemplate
+  'hockey-circular-icon': HockeyCircularIconTemplate,
+  'hockey-content-card': HockeyContentCardTemplate
 }
