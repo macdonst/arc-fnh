@@ -26,7 +26,6 @@ async function getGoalies(cancellations = [], spares = []) {
 }
 
 function listPlayers(players = []) {
-  console.log(players)
   return players
     .filter((player) => player !== undefined)
     .map((player) => player?.name)
