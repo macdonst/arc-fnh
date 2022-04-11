@@ -19,6 +19,8 @@ get /games/:id
 post /games
 post /games/:id
 post /games/:id/delete
+get /import
+post /import
 
 @scheduled
 weekly-reminder cron(0 8 ? * WED *)

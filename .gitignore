@@ -130,7 +130,8 @@ dist
 .pnp.*
 
 # seed-data
-sandbox-seed.js
+sandbox-seed.json
+production-data.json
 
 # arc project files
 preferences.arc
