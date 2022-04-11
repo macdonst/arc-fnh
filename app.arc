@@ -20,8 +20,12 @@ post /games
 post /games/:id
 post /games/:id/delete
 
+@scheduled
+weekly-reminder cron(0 8 ? * WED *)
+
 @plugins
 arc-plugin-oauth
+architect/plugin-lambda-invoker
 
 @oauth
 use-mock true

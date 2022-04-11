@@ -56,4 +56,38 @@ const getSpares = async function () {
   return getPlayers('false')
 }
 
-export { deletePlayer, getPlayer, getFulltimePlayers, getSpares, upsertPlayer }
+const getPlayerInfo = async function (players = []) {
+  return Promise.all(players.map((player) => getPlayer(player)))
+}
+
+const getGoalies = async function (cancellations = [], spares = []) {
+  const players = await getFulltimePlayers()
+  const goalies = players.filter(
+    (player) =>
+      player.position === 'goalie' && !cancellations.includes(player.email)
+  )
+  spares.forEach(function (spare) {
+    if (spare?.position === 'goalie') {
+      goalies.push(spare)
+    }
+  })
+  return goalies
+}
+
+const listPlayersNames = function (players = []) {
+  return players
+    .filter((player) => player !== undefined)
+    .map((player) => player?.name)
+    .join(', ')
+}
+
+export {
+  deletePlayer,
+  getPlayer,
+  getFulltimePlayers,
+  getSpares,
+  upsertPlayer,
+  getPlayerInfo,
+  getGoalies,
+  listPlayersNames
+}

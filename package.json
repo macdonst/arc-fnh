@@ -12,6 +12,7 @@
     "devDependencies": {
         "@architect/architect": "^10.2.1",
         "@architect/eslint-config": "^2.0.1",
+        "@architect/plugin-lambda-invoker": "^0.1.1",
         "eslint": "^8.11.0",
         "eslint-config-prettier": "^8.5.0",
         "eslint-plugin-prettier": "^4.0.0",
@@ -24,7 +25,9 @@
         "@architect/functions": "^5.0.4",
         "@enhance/ssr": "^2.0.3",
         "@enhance/styles": "^1.0.0",
-        "arc-plugin-oauth": "^0.0.15"
+        "arc-plugin-oauth": "^0.0.15",
+        "googleapis": "^100.0.0",
+        "nodemailer": "^6.7.3"
     },
     "eslintConfig": {
         "extends": [

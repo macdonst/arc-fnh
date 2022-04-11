@@ -1,36 +1,15 @@
 import arc from '@architect/functions'
 import { getNextGame } from '@architect/shared/db/games.mjs'
-import { getPlayer, getFulltimePlayers } from '@architect/shared/db/players.mjs'
+import {
+  getPlayerInfo,
+  getGoalies,
+  listPlayersNames
+} from '@architect/shared/db/players.mjs'
 import render from '@architect/views/render.mjs'
 import arcOauth from 'arc-plugin-oauth'
 const auth = arcOauth.auth
 
 export const handler = arc.http.async(auth, index)
-
-async function getPlayerInfo(players = []) {
-  return Promise.all(players.map((player) => getPlayer(player)))
-}
-
-async function getGoalies(cancellations = [], spares = []) {
-  const players = await getFulltimePlayers()
-  const goalies = players.filter(
-    (player) =>
-      player.position === 'goalie' && !cancellations.includes(player.email)
-  )
-  spares.forEach(function (spare) {
-    if (spare?.position === 'goalie') {
-      goalies.push(spare)
-    }
-  })
-  return goalies
-}
-
-function listPlayers(players = []) {
-  return players
-    .filter((player) => player !== undefined)
-    .map((player) => player?.name)
-    .join(', ')
-}
 
 async function index(req) {
   const initialState = { account: req.session?.account }
@@ -74,13 +53,13 @@ async function index(req) {
               </p>
               <p class="c-p1">
                 <ul class="list-none">
-                <li class="mb-3"><span class="font-semibold">Cancellations:</span> ${listPlayers(
+                <li class="mb-3"><span class="font-semibold">Cancellations:</span> ${listPlayersNames(
                   cancellations
                 )}</li>
-                <li class="mb-3"><span class="font-semibold">Spares:</span> ${listPlayers(
+                <li class="mb-3"><span class="font-semibold">Spares:</span> ${listPlayersNames(
                   spares
                 )}</li>
-                <li class="mb-3"><span class="font-semibold">Goalies:</span> ${listPlayers(
+                <li class="mb-3"><span class="font-semibold">Goalies:</span> ${listPlayersNames(
                   goalies
                 )}</li>
                 </ul>
