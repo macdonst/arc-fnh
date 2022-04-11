@@ -13,7 +13,6 @@ async function players(req) {
       `
     <hockey-page>
       <hockey-form action="/import" name="import2">
-      <input name="ack" value="ack"></input>
         <label for="importdata">Data:</label>
         <textarea id="importdata" name="importdata" label="Data" required="true" rows="40" cols="80" form="import2"></textarea>
       </hockey-form>
