@@ -1,5 +1,5 @@
 import nodemailer from 'nodemailer'
-import { google } from 'googleapis'
+import { OAuth2Client } from 'google-auth-library'
 import { getNextGame } from '@architect/shared/db/games.mjs'
 import {
   getGoalies,
@@ -7,8 +7,6 @@ import {
   getFulltimePlayers,
   listPlayersNames
 } from '@architect/shared/db/players.mjs'
-
-const OAuth2 = google.auth.OAuth2
 
 function convertTo12Hour(timestring) {
   return new Date('1970-01-01T' + timestring + 'Z').toLocaleTimeString(
@@ -68,7 +66,7 @@ export async function handler() {
 
   const subject = createSubject(next)
 
-  const oauth2Client = new OAuth2(
+  const oauth2Client = new OAuth2Client(
     clientId,
     clientSecret,
     'https://developers.google.com/oauthplayground'
@@ -76,8 +74,11 @@ export async function handler() {
 
   oauth2Client.setCredentials({ refresh_token })
 
-  const tokens = await oauth2Client.refreshAccessToken()
-  const accessToken = tokens.credentials.access_token
+  const { Authorization } = await oauth2Client.getRequestHeaders()
+  const accessToken =
+    Authorization?.split(' ')[0] === 'Bearer'
+      ? Authorization.split(' ')[1]
+      : null
 
   const smtpTransport = nodemailer.createTransport({
     service: 'gmail',
