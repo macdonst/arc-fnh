@@ -7,7 +7,7 @@ const auth = arcOauth.auth
 export const handler = arc.http.async(auth, http)
 
 async function http(req) {
-  const { players, games } = JSON.parse(
+  const { players = [], games = [] } = JSON.parse(
     req.body.importdata.split('\r\n').join('')
   )
 
