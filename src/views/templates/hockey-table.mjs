@@ -7,10 +7,6 @@ export default function HockeyTableTemplate({ html }) {
         margin: 10px 0px 10px 0px;
         background-color: var(--grey-2);
       }
-      thead {
-        border-width: 2px;
-        border-color: var(--dark-blue);
-      }
       tbody {
         border-radius: 4px;
         border-width: 2px;
@@ -22,16 +18,14 @@ export default function HockeyTableTemplate({ html }) {
         text-align: left;
         margin: 0;
       }
-
       tbody tr:nth-child(2n) {
         background-color: var(--grey1);
       }
-
       th {
         position: sticky;
         top: 0;
-        background-color: var(--dark-blue);
-        color: white;
+        background-color: var(--grey0);
+        color: var(--grey6);
       }
     </style>
 

@@ -11,6 +11,8 @@ import HockeyFormTemplate from './templates/hockey-form.mjs'
 import HockeySaveButtonTemplate from './templates/hockey-save-button.mjs'
 import HockeyCircularIconTemplate from './templates/hockey-circular-icon.mjs'
 import HockeyContentCardTemplate from './templates/hockey-content-card.mjs'
+import HockeyHeaderTabTemplate from './templates/hockey-header-tab.mjs'
+import HockeyIcon from './templates/hockey-icon.mjs'
 
 export default {
   'hockey-header': HockeyHeaderTemplate,
@@ -25,5 +27,7 @@ export default {
   'hockey-form': HockeyFormTemplate,
   'hockey-save-button': HockeySaveButtonTemplate,
   'hockey-circular-icon': HockeyCircularIconTemplate,
-  'hockey-content-card': HockeyContentCardTemplate
+  'hockey-content-card': HockeyContentCardTemplate,
+  'hockey-header-tab': HockeyHeaderTabTemplate,
+  'hockey-icon': HockeyIcon
 }

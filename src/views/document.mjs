@@ -30,6 +30,9 @@ export default function Document(body = '') {
       .bg-lightblue:active {
         background-color: var(--light-blue);
       }
+      .bg-dark {
+        background-color: var(--grey4);
+      }
       .bg-light {
         background-color: var(--grey0);
       }
@@ -68,8 +71,11 @@ export default function Document(body = '') {
       .color-fill-dark {
         fill: var(--grey7);
       }
+      .color-fill-dark:hover {
+        fill: var(--grey8)
+      }
       .border-gradient {
-        border-color: var(--blue);
+        border-color: var(--grey6);
       }
       .border-dark {
         border-color: var(--grey3);
@@ -86,28 +92,28 @@ export default function Document(body = '') {
       }
       .fancy-select {
         appearance: none;
-        background-image: linear-gradient(var(--grey7), var(--grey7)),
-            linear-gradient(-135deg, transparent 50%, var(--light-blue) 50%),
-            linear-gradient(-225deg, transparent 50%, var(--light-blue) 50%),
-            linear-gradient(var(--light-blue) 42%, var(--dark-blue) 42%);
+        background-image: linear-gradient(var(--grey8), var(--grey8)),
+            linear-gradient(-135deg, transparent 50%, var(--grey3) 50%),
+            linear-gradient(-225deg, transparent 50%, var(--grey3) 50%),
+            linear-gradient(var(--grey3) 42%, var(--grey6) 42%);
         background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
         background-size: 1px 100%, 20px 22px, 20px 22px, 20px 100%;
         background-position: right 20px center, right bottom, right bottom, right bottom;
       }
       .fancy-select:hover {
-        background-image: linear-gradient(var(--dark-blue), var(--dark-blue)),
-            linear-gradient(-135deg, transparent 50%, var(--dark-blue) 50%),
-            linear-gradient(-225deg, transparent 50%, var(--dark-blue) 50%),
-            linear-gradient(var(--dark-blue) 42%, var(--light-blue) 42%);
+        background-image: linear-gradient(var(--grey6), var(--grey6)),
+            linear-gradient(-135deg, transparent 50%, var(--grey6) 50%),
+            linear-gradient(-225deg, transparent 50%, var(--grey6) 50%),
+            linear-gradient(var(--grey6) 42%, var(--grey3) 42%);
       }
       .fancy-select:active {
-        background-image: linear-gradient(var(--dark-blue), var(--dark-blue)),
-            linear-gradient(-135deg, transparent 50%, var(--dark-blue) 50%),
-            linear-gradient(-225deg, transparent 50%, var(--dark-blue) 50%),
-            linear-gradient(var(--dark-blue) 42%, var(--light-blue) 42%);
-        color: var(--light-blue);
-        border-color: var(--dark-blue);
-        background-color: var(--dark-blue);
+        background-image: linear-gradient(var(--grey6), var(--grey6)),
+            linear-gradient(-135deg, transparent 50%, var(--grey6) 50%),
+            linear-gradient(-225deg, transparent 50%, var(--grey6) 50%),
+            linear-gradient(var(--grey6) 42%, var(--grey3) 42%);
+        color: var(--grey3);
+        border-color: var(--blue);
+        background-color: var(--grey6);
       }
       .menu-open {
         top: 2.8rem;
@@ -120,7 +126,6 @@ export default function Document(body = '') {
     <body class="font-sans color-dark bg-light">
     ${Symbols}
     ${body}
-    <script src="/components/js/index.js"/>
     </body>
   </html>
     `

@@ -3,10 +3,11 @@ export default function HockeyCircularIconTemplate({ html, state = {} }) {
   return html`
     <div>
       <div
-        class="mr0 whitespace-nowrap justify-center items-center inline-flex radius2 bg-lightblue icon color-white">
-        <svg style="width: 2.5rem;">
-          <use xlink:href="#${icon}"></use>
-        </svg>
+        class="mr0 whitespace-nowrap justify-center items-center inline-flex radius2 bg-dark icon">
+        <hockey-icon
+          style="width: 2.5rem;"
+          class="color-fill-dark"
+          icon="${icon}"></hockey-icon>
       </div>
     </div>
 

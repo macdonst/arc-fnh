@@ -10,7 +10,8 @@ export default function HockeyHeaderTemplate({ html, state = {} }) {
     sticky
     top0
     z1
-    color-white
+    color-dark
+    color-hover-darkest
   ">
       <header
         class="
@@ -25,7 +26,7 @@ export default function HockeyHeaderTemplate({ html, state = {} }) {
     bg-p5
     text-g0
     overflow-hidden
-    bg-blue
+    bg-light
   ">
         <div
           class="
@@ -49,9 +50,8 @@ export default function HockeyHeaderTemplate({ html, state = {} }) {
         items-center
         cursor-pointer
       ">
-            <svg style="width: 1.5rem; height: 1.5rem;" class="mr-2">
-              <use xlink:href="#hockey"></use>
-            </svg>
+      <hockey-icon style="width: 1.5rem; height: 1.5rem;"
+      class="mr-2 color-fill-dark" icon="hockey"></hockey-icon>
             Friday Night Hockey
           </a>
           <nav
@@ -88,7 +88,7 @@ export default function HockeyHeaderTemplate({ html, state = {} }) {
         menu-closed
         z-1
         z0-lg
-        bg-blue
+        bg-light
       ">
             <span
               class="
@@ -96,96 +96,21 @@ export default function HockeyHeaderTemplate({ html, state = {} }) {
          flex-grow
          justify-center
         ">
-              <a
-                class="
-flex
-uppercase
-items-center
-font-medium
-leading5
-text-p8
-radius-pill
-text-h0
-mb-2
-mb-none-lg
-mr-0-lg
-pr1
-pl0
-bg-a3
-no-underline
-"
-                alt="Games"
-                href="/games">
-                <div class="mr-2">
-                  <svg
-                    style="width: 1rem; height: 1rem;"
-                    class="color-fill-white">
-                    <use xlink:href="#calendar"></use>
-                  </svg>
-                </div>
-
-                <span>Schedule</span>
-              </a>
-              <a
-                class="
-flex
-uppercase
-items-center
-font-medium
-leading5
-text-p8
-radius-pill
-text-h0
-mb-2
-mb-none-lg
-mr-0-lg
-pr1
-pl0
-bg-a3
-no-underline
-"
-                alt="Players"
-                href="/players">
-                <div class="mr-2">
-                  <svg
-                    style="width: 1rem; height: 1rem;"
-                    class="color-fill-white">
-                    <use xlink:href="#user"></use>
-                  </svg>
-                </div>
-                <span>Players</span>
-              </a>
-              <a
-                class="
-flex
-uppercase
-items-center
-font-medium
-leading5
-text-p8
-radius-pill
-text-h0
-mb-2
-mb-none-lg
-mr-0-lg
-pr1
-pl0
-bg-a3
-no-underline
-"
-                alt="Spares"
-                href="/players?type=spares">
-                <div class="mr-2">
-                  <svg
-                    style="width: 1rem; height: 1rem;"
-                    class="color-fill-white">
-                    <use xlink:href="#users"></use>
-                  </svg>
-                </div>
-
-                <span>Spares</span>
-              </a>
-            </span>
+        <hockey-header-tab
+          label="Schedule"
+          href="/games"
+          icon="calendar">
+        </hockey-header-tab>
+        <hockey-header-tab
+          label="Players"
+          href="/players"
+          icon="user">
+        </hockey-header-tab>
+        <hockey-header-tab
+          label="Spares"
+          href="/players?type=spares"
+          icon="users">
+        </hockey-header-tab>
           </nav>
           <span
             class="
@@ -216,9 +141,7 @@ no-underline
         cursor-pointer
         bg-p0
       ">
-            <svg style="width: 1rem; height: 1rem;" class="color-fill-white">
-              <use xlink:href="#hamburger"></use>
-            </svg>
+            <hockey-icon style="width: 1rem; height: 1rem;" class="mr-2 color-fill-dark" icon="hamburger"></hockey-icon>
           </button>
         </div>
         <div

@@ -9,9 +9,7 @@ export default function HockeyActionButtonTemplate({ html, state = {} }) {
   const innerText = `${
     icon !== ''
       ? `<div class="mr-2 inline-block">
-          <svg style="width: 1rem; height: 1rem;" class="color-fill-dark color-fill-darkest">
-            <use xlink:href="#${icon}"></use>
-          </svg>
+          <hockey-icon style="width: 1rem; height: 1rem;" class="color-fill-dark color-fill-darkest" icon="${icon}"></hockey-icon>
          </div>`
       : ``
   }
