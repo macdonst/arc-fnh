@@ -21,7 +21,7 @@ jobs:
     # Go
     steps:
       - name: Build App
-        uses: architect/action-build@v1
+        uses: architect/action-build@v2
 
   # Assuming all that went fine (and it's main): deploy!
   deploy:
