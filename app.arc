@@ -8,19 +8,22 @@ folder public
 @http
 get /
 get /components/*
+
 get /players
 get /players/add
 post /players
-post /players/:id
 post /players/:id/delete
+
 get /games
 get /games/add
 get /games/:id
 post /games
 post /games/:id
 post /games/:id/delete
+
 get /import
 post /import
+
 get /seasons
 get /seasons/add
 post /seasons
