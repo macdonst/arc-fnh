@@ -1,13 +1,14 @@
 import arc from '@architect/functions'
 import render from '@architect/views/render.mjs'
-import { getGames } from '@architect/shared/db/games.mjs'
+import { getGames, getGamesBySeason } from '@architect/shared/db/games.mjs'
 import arcOauth from 'arc-plugin-oauth'
 const auth = arcOauth.auth
 
 export const handler = arc.http.async(auth, games)
 
 async function games(req) {
-  const games = await getGames()
+  const { season } = req.query
+  const games = season ? await getGamesBySeason(season) : await getGames()
   const initialState = { account: req.session?.account }
 
   return {

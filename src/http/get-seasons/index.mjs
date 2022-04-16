@@ -10,8 +10,6 @@ async function players(req) {
   const initialState = { account: req.session?.account }
   const seasons = await getSeasons()
 
-  console.log(seasons)
-
   return {
     html: render(
       `
@@ -30,7 +28,7 @@ async function players(req) {
               .map(
                 (season) =>
                   `<tr>
-                  <td><a href="/seasons/add?id=${season.seasonID}">${season.name}</a></td>
+                  <td><a href="/games?season=${season.seasonID}">${season.name}</a></td>
                   <td>${season.startDate}</td>
                   <td>${season.endDate}</td>
                   <td>${season.cost}</td>

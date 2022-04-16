@@ -1,4 +1,5 @@
 import arc from '@architect/functions'
+import { getSeason } from './seasons.mjs'
 
 const getGame = async function (id) {
   const db = await arc.tables()
@@ -43,6 +44,23 @@ const getGames = async function () {
   return games.Items.sort((a, b) => new Date(a.gamedate) - new Date(b.gamedate))
 }
 
+const getGamesBySeason = async function (id) {
+  const db = await arc.tables()
+
+  const season = await getSeason(id)
+  console.log(season)
+
+  let games = await db.games.scan({
+    FilterExpression: 'gamedate BETWEEN :startDate and :endDate',
+    ExpressionAttributeValues: {
+      ':startDate': season.startDate,
+      ':endDate': season.endDate
+    }
+  })
+
+  return games.Items.sort((a, b) => new Date(a.gamedate) - new Date(b.gamedate))
+}
+
 const upsertGame = async function (game) {
   const db = await arc.tables()
 
@@ -61,4 +79,11 @@ const deleteGame = async function (id) {
   return result
 }
 
-export { deleteGame, getGame, getGames, getNextGame, upsertGame }
+export {
+  deleteGame,
+  getGame,
+  getGames,
+  getGamesBySeason,
+  getNextGame,
+  upsertGame
+}

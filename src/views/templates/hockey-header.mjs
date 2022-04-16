@@ -98,7 +98,7 @@ export default function HockeyHeaderTemplate({ html, state = {} }) {
         ">
         <hockey-header-tab
           label="Schedule"
-          href="/games"
+          href="/seasons"
           icon="calendar">
         </hockey-header-tab>
         <hockey-header-tab
