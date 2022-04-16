@@ -21,6 +21,10 @@ post /games/:id
 post /games/:id/delete
 get /import
 post /import
+get /seasons
+get /seasons/add
+post /seasons
+post /seasons/:id/delete
 
 @scheduled
 weekly-reminder cron(0 8 ? * WED *)
@@ -40,6 +44,9 @@ players
 games
   gamedate *String
 
+seasons
+  seasonID *String
+
 @tables-indexes
 players
   fulltime *String
@@ -48,6 +55,10 @@ players
 games
   gamedate *String
   name gamesByDate
+
+seasons
+  seasonID *String
+  name seasonsByID
 
 
 @aws
