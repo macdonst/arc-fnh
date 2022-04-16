@@ -52,6 +52,11 @@ const getFulltimePlayers = async function () {
   return getPlayers('true')
 }
 
+const getFulltimeSkaters = async function () {
+  const players = await getPlayers('true')
+  return players.filter((player) => player.position !== 'goalie')
+}
+
 const getSpares = async function () {
   return getPlayers('false')
 }
@@ -85,6 +90,7 @@ export {
   deletePlayer,
   getPlayer,
   getFulltimePlayers,
+  getFulltimeSkaters,
   getSpares,
   upsertPlayer,
   getPlayerInfo,
