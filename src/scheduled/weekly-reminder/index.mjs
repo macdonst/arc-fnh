@@ -7,6 +7,7 @@ import {
   getFulltimePlayers,
   listPlayersNames
 } from '@architect/shared/db/players.mjs'
+import { getSeasonWithGame } from '@architect/shared/db/seasons.mjs'
 
 function convertTo12Hour(timestring) {
   return new Date('1970-01-01T' + timestring + 'Z').toLocaleTimeString(
@@ -20,13 +21,16 @@ function convertTo12Hour(timestring) {
   )
 }
 
-function createSubject(next) {
+async function createSubject(next) {
   const date = new Date(next.gamedate)
   const dayOfWeek = date.toLocaleDateString('en-US', { weekday: 'long' })
   const month = date.toLocaleDateString('en-US', { month: 'long' })
   const timeString12hr = convertTo12Hour(next.time)
+  const season = await getSeasonWithGame(next.gamedate)
 
-  return `Winter Hockey: ${dayOfWeek} ${month} ${date.getDate()} ${timeString12hr} at ${
+  return `${
+    season.name
+  }: ${dayOfWeek} ${month} ${date.getDate()} ${timeString12hr} at ${
     next.facility
   }`
 }
@@ -64,7 +68,7 @@ export async function handler() {
   const spares = await getPlayerInfo(next.spares)
   const goalies = await getGoalies(next.cancellations, spares)
 
-  const subject = createSubject(next)
+  const subject = await createSubject(next)
 
   const oauth2Client = new OAuth2Client(
     clientId,

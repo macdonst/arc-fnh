@@ -32,6 +32,19 @@ const getSeason = async function (id) {
   return season
 }
 
+const getSeasonWithGame = async function (id) {
+  const db = await arc.tables()
+
+  let season = await db.seasons.scan({
+    FilterExpression: 'startDate <= :gameID and endDate >= :gameID',
+    ExpressionAttributeValues: {
+      ':gameID': id
+    }
+  })
+
+  return season.Items[0] || {}
+}
+
 const getSeasons = async function () {
   const db = await arc.tables()
 
@@ -40,4 +53,4 @@ const getSeasons = async function () {
   return seasons.Items
 }
 
-export { deleteSeason, getSeason, getSeasons, upsertSeason }
+export { deleteSeason, getSeason, getSeasons, getSeasonWithGame, upsertSeason }
