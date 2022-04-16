@@ -9,7 +9,19 @@ const getGame = async function (id) {
 }
 
 const getNextGame = async function () {
-  const todaysDate = new Date().toISOString().slice(0, 10)
+  const now = new Date(
+    new Date().toLocaleString('en-US', {
+      timeZone: 'America/New_York'
+    })
+  )
+
+  // date time in YYYY-MM-DD format
+  let todaysDate =
+    now.getFullYear() +
+    '-' +
+    ('0' + (now.getMonth() + 1)).slice(-2) +
+    '-' +
+    ('0' + now.getDate()).slice(-2)
 
   const db = await arc.tables()
 
