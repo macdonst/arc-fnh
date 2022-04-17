@@ -14,9 +14,6 @@ export const handler = arc.http.async(auth, index)
 
 function sparesNeeded(players, cancellations, spares) {
   const total = players - cancellations + spares - 20
-  console.log(`${players} - ${cancellations} + ${spares} - 20`)
-
-  console.log(total)
   return total < 0 ? total * -1 : 0
 }
 

@@ -48,7 +48,6 @@ const getGamesBySeason = async function (id) {
   const db = await arc.tables()
 
   const season = await getSeason(id)
-  console.log(season)
 
   let games = await db.games.scan({
     FilterExpression: 'gamedate BETWEEN :startDate and :endDate',
