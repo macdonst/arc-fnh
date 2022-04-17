@@ -30,14 +30,24 @@ async function players(req) {
               .map(
                 (player) =>
                   `<tr>
-                  <td><a href="/players/add?id=${player.email}">${player.name}</a></td>
+                  <td><a href="/players/add?id=${player.email}">${
+                    player.name
+                  } ${
+                    player.preferred === 'true'
+                      ? `<hockey-icon icon="star" style="width: 1rem; height: 1rem; display: inline;"></hockey-icon>`
+                      : ''
+                  }</a></td>
                   <td>${player.email}</td>
                   <td>${player.phone}</td>
                   <td class="capitalize">${player.position}</td>
                   <td>
                     <hockey-action-buttons>
-                      <hockey-action-button action="/players/add?id=${player.email}" icon="write" type="link"></hockey-action-button>
-                      <hockey-action-button action="/players/${player.email}/delete" icon="delete"></hockey-action-button>
+                      <hockey-action-button action="/players/add?id=${
+                        player.email
+                      }" icon="write" type="link"></hockey-action-button>
+                      <hockey-action-button action="/players/${
+                        player.email
+                      }/delete" icon="delete"></hockey-action-button>
                     </hockey-action-buttons>
                   </td>
                 </tr>`

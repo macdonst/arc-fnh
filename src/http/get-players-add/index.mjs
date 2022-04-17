@@ -9,7 +9,8 @@ const initialPlayer = {
   email: '',
   phone: '',
   position: '',
-  fulltime: ''
+  fulltime: '',
+  preferred: 'false'
 }
 
 export const handler = arc.http.async(auth, players)
@@ -24,11 +25,26 @@ async function players(req) {
       `
     <hockey-page>
       <hockey-form action="/players">
-        <hockey-input id="name" label="Name" type="text" required="true" value="${player.name}"></hockey-input>
-        <hockey-input id="email" label="Email" type="email" required="true" value="${player.email}"></hockey-input>
-        <hockey-input id="phone" label="Phone" type="tel" value="${player.phone}"></hockey-input>
-        <hockey-select id="position" label="Position" required="true" value="${player.position}"></hockey-select>
-        <hockey-input id="fulltime" label="Fulltime" type="checkbox" required="false" value="${player.fulltime}"></hockey-input>
+        <hockey-input id="name" label="Name" type="text" required="true" value="${
+          player.name
+        }"></hockey-input>
+        <hockey-input id="email" label="Email" type="email" required="true" value="${
+          player.email
+        }"></hockey-input>
+        <hockey-input id="phone" label="Phone" type="tel" value="${
+          player.phone
+        }"></hockey-input>
+        <hockey-select id="position" label="Position" required="true" value="${
+          player.position
+        }"></hockey-select>
+        <hockey-input id="fulltime" label="Fulltime" type="checkbox" required="false" value="${
+          player.fulltime
+        }"></hockey-input>
+        ${
+          player.fulltime !== 'true'
+            ? `<hockey-input id="preferred" label="Preferred" type="checkbox" required="false" value="${player.preferred}"></hockey-input>`
+            : ''
+        }
       </hockey-form>
     </hockey-page>
   `,
