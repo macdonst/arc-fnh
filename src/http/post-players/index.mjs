@@ -7,8 +7,10 @@ export const handler = arc.http.async(auth, http)
 
 async function http(req) {
   await upsertPlayer(req.body)
+  const location =
+    req.body.fulltime === 'true' ? '/players' : '/players?type=spares'
 
   return {
-    location: '/players'
+    location
   }
 }
