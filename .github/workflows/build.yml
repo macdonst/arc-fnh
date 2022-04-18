@@ -3,25 +3,13 @@ name: Node CI
 # Push tests pushes; PR tests merges
 on: [ push, pull_request ]
 
-defaults:
-  run:
-    shell: bash
-
 jobs:
 
   # Test the build
   build:
-    # Setup
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        node-version: [ 14.x ]
-        os: [ ubuntu-latest ]
 
     # Go
     steps:
-      - name: Cancel previous runs
-        uses: styfle/cancel-workflow-action@0.9.1
       - name: Build App
         uses: architect/action-build@v3
 
@@ -34,8 +22,6 @@ jobs:
 
     # Go
     steps:
-      - name: Cancel previous runs
-        uses: styfle/cancel-workflow-action@0.9.1
       - name: Deploy app
         uses: architect/action-deploy@v1
         with:
