@@ -4,9 +4,10 @@ name: Node CI
 on: [ push, pull_request ]
 
 jobs:
-
   # Test the build
   build:
+    # Setup
+    runs-on: ubuntu-latest
 
     # Go
     steps:
