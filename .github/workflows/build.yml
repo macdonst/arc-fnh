@@ -20,6 +20,8 @@ jobs:
 
     # Go
     steps:
+      - name: Cancel previous runs
+        uses: styfle/cancel-workflow-action@0.9.1
       - name: Build App
         uses: architect/action-build@v3
 
@@ -32,6 +34,8 @@ jobs:
 
     # Go
     steps:
+      - name: Cancel previous runs
+        uses: styfle/cancel-workflow-action@0.9.1
       - name: Deploy app
         uses: architect/action-deploy@v1
         with:
