@@ -12,7 +12,7 @@ jobs:
     # Go
     steps:
       - name: Build App
-        uses: architect/action-build@v3.0.5
+        uses: architect/action-build@v3
         with:
           use_lock_file: false
 
