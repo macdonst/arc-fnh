@@ -13,8 +13,6 @@ jobs:
     steps:
       - name: Build App
         uses: architect/action-build@v3
-        with:
-          use_lock_file: false
 
   # Assuming all that went fine (and it's main): deploy!
   deploy:
@@ -30,4 +28,3 @@ jobs:
         with:
           aws_access_key_id: ${{secrets.AWS_ACCESS_KEY_ID}}
           aws_secret_access_key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
-          use_lock_file: false
