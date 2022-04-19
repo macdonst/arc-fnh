@@ -10,7 +10,6 @@
         "test:unit": "tape 'test/**/*.js' | tap-arc"
     },
     "devDependencies": {
-        "@architect/architect": "^10.2.1",
         "@architect/eslint-config": "^2.0.1",
         "@architect/plugin-lambda-invoker": "^0.1.1",
         "eslint": "^8.11.0",
