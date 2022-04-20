@@ -1,7 +1,7 @@
 export default function HockeyPageTemplate({ html }) {
   return html`
     <hockey-header></hockey-header>
-    <div class="p0 flex flex-col gap-2">
+    <div class="p0 flex flex-col gap-2 max-width0 m-auto">
       <slot></slot>
     </div>
 

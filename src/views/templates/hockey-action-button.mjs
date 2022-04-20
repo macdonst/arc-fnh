@@ -23,7 +23,7 @@ export default function HockeyActionButtonTemplate({ html, state = {} }) {
   if (type === 'link') {
     button = `<a href="${action}" class="mr-1 ${
       variant !== 'quiet'
-        ? 'radius1 border2 border-dark bg-lighter bg-hover-lightest color-hover-darkest pt-2 pb-2 pl-2 pr-2 inline-flex justify-center'
+        ? 'pt-1 pb-1 pl-1 pr-1 inline-flex justify-center bg-lighter radius2 shadow-1-hover'
         : ''
     }">${innerText}</a>`
   } else {

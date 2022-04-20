@@ -9,11 +9,11 @@ export default function HockeySelectTemplate({ html, state = {} }) {
   return html`
     <div>
       <label for="${id}" class="flex w-full flex-col gap-4">
-        <span>${label}:</span>
+        <span class="text-1 mb-2">${label}:</span>
         <select
           name="${id}"
           required="${required}"
-          class="leading5-l pt-3 pb-3 pl-1 pr2 border-gradient border1 radius1 fancy-select">
+          class="leading5-l pt-3 pb-3 pl-1 pr2  radius2 shadow-2">
           <option value="skater" ${value === 'skater' ? 'selected' : ''}>
             Skater
           </option>

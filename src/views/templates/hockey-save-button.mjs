@@ -2,7 +2,7 @@ export default function HockeySaveButtonTemplate({ html }) {
   return html`
     <div class="text-right">
       <button
-        class="bg-blue bg-hover-dark-blue color-white pt-1 pb-1 pr0 pl0 radius1">
+        class="bg-blue bg-hover-dark-blue color-white pt-1 pb-1 pr0 pl0 radius2">
         Save
       </button>
     </div>

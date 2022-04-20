@@ -8,7 +8,7 @@ const auth = arcOauth.auth
 export const handler = arc.http.async(auth, gameStatus)
 
 function createSelectBox(spares, currentSpare) {
-  return `<select name="spares" class="leading5-l pt-3 pb-3 pl-1 pr2 border-gradient border1 radius1 fancy-select">
+  return `<select name="spares" class="leading5-l pt-3 pb-3 pl-1 pr2  radius2 shadow-2">
       <option value="none" ${
         currentSpare === 'none' ? 'selected' : ''
       }>No Spare</option>
@@ -64,7 +64,7 @@ async function gameStatus(req) {
                       ${player.position}
                     </enhance-td>
                     <enhance-td>
-                      <input type="checkbox" name="cancellations" value="${
+                      <input type="checkbox" name="cancellations" class="leading5-l pt-3 pb-3 pl-1 pr-1 radius2 shadow-2" value="${
                         player.email
                       }" ${cancelled ? 'checked' : ''}/>
                     </enhance-td>

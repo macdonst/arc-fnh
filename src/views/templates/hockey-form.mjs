@@ -1,11 +1,12 @@
 export default function HockeyFormTemplate({ html, state = {} }) {
   const { action = '', name = '' } = state.attrs
   return html`
-    <div class="p-6">
+    <div
+      class="flex flex-row p2 radius3 bg-lighter shadow-1 max-width-2 m-auto">
       <form
-        class="flex flex-col gap-1"
+        class="flex flex-col gap-1 w-full"
         action="${action}"
-        method="post"
+        method="POST"
         ${name !== '' ? `name="${name}" id="${name}"` : ''}>
         <slot></slot>
         <hockey-save-button></hockey-save-button>

@@ -59,20 +59,23 @@ export default function Document(body = '') {
       }
       .color-darkest,
       .color-hover-darkest:hover {
-        color: var(--grey8)
+        color: var(--grey8);
       }
       .color-fill-darkest,
       .color-fill-darkest:hover {
         fill: var(--grey8);
       }
+      .color-grey {
+        color: var(--grey6);
+      }
       .color-dark {
-        color: var(--grey7)
+        color: var(--grey7);
       }
       .color-fill-dark {
         fill: var(--grey7);
       }
       .color-fill-dark:hover {
-        fill: var(--grey8)
+        fill: var(--grey8);
       }
       .border-gradient {
         border-color: var(--grey6);
@@ -120,6 +123,36 @@ export default function Document(body = '') {
       }
       .menu-closed {
         top: -20rem;
+      }
+      .shadow0 {
+        box-shadow: 12px 12px 24px #7b7b7b, -12px -12px 24px #ffffff;
+      }
+      .shadow-1 {
+        box-shadow: 3px 3px 6px #7b7b7b, -3px -3px 6px #ffffff;
+      }
+      .shadow-1-hover {
+        box-shadow: 3px 3px 6px #7b7b7b, -3px -3px 6px #ffffff;
+      }
+      .shadow-1-hover:hover {
+        box-shadow: inset 3px 3px 6px #7b7b7b, inset -3px -3px 6px #ffffff;
+      }
+      .shadow-2 {
+        box-shadow: inset 2px 2px 5px #7b7b7b, inset -3px -3px 7px #fff;
+      }
+      .max-width0 {
+        max-width: 1140px;
+      }
+      .max-width-1 {
+        max-width: 920px;
+      }
+      .max-width-2 {
+        max-width: 540px;
+      }
+      .max-width-3 {
+        max-width: 350px;
+      }
+      .hoverTable enhance-tbody .enhance-tbody enhance-tr .enhance-tr:hover {
+        background-color: var(--grey1);
       }
     </style>
     </head>

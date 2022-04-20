@@ -7,12 +7,9 @@ export default function EnhanceTD({ html }) {
       }
       .enhance-td {
         display: table-cell;
-        padding: 10px;
-        text-align: left;
-        margin: 0;
       }
     </style>
-    <div class="enhance-td">
+    <div class="enhance-td p-1 m-none text-left">
       <slot></slot>
     </div>
   `

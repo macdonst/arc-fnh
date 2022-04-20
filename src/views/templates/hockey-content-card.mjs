@@ -1,6 +1,6 @@
 export default function HockeyContentCardTemplate({ html }) {
   return html`
-    <div class="flex flex-row p2 radius1 border2 border-dark bg-lighter">
+    <div class="flex flex-row p2 radius3 bg-lighter shadow0 max-width-1 m-auto">
       <hockey-circular-icon icon="hockey"></hockey-circular-icon>
       <div>
         <slot name="header"></slot>

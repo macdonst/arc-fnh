@@ -1,5 +1,4 @@
-export default function EnhanceTH({ html, state = {} }) {
-  const { classes = '' } = state.attrs
+export default function EnhanceTH({ html }) {
   return html`
     <style>
       :host,
@@ -8,17 +7,9 @@ export default function EnhanceTH({ html, state = {} }) {
       }
       .th {
         display: table-cell;
-        padding: 10px;
-        text-align: left;
-        margin: 0;
-        position: sticky;
-        top: 0;
-        background-color: var(--th-bg-color, var(--grey0));
-        color: var(--th-text-color, var(--grey6));
-        font-weight: bold;
       }
     </style>
-    <div class="th ${classes}">
+    <div class="th p0 m-none text-left sticky font-bold color-grey top0">
       <slot></slot>
     </div>
   `

@@ -9,14 +9,14 @@ export default function HockeyInputTemplate({ html, state = {} }) {
   return html`
     <div>
       <label for="${id}" class="flex w-full flex-col gap-4">
-        <span>${label}:</span>
+        <span class="text-1 mb-2">${label}:</span>
         <input
           type="${type}"
           name="${id}"
           ${required === 'true' ? `required` : ``}
           ${type === 'checkbox' ? 'value="true"' : `value="${value}"`}
           ${(type === 'checkbox') & (value === 'true') ? 'checked' : ''}
-          class="leading5-l pt-3 pb-3 pl-1 pr-1 border-gradient border1 radius1" />
+          class="leading5-l pt-3 pb-3 pl-1 pr-1 radius2 shadow-2" />
       </label>
     </div>
 

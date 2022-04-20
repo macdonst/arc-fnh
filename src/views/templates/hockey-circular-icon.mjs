@@ -3,7 +3,7 @@ export default function HockeyCircularIconTemplate({ html, state = {} }) {
   return html`
     <div>
       <div
-        class="mr0 whitespace-nowrap justify-center items-center inline-flex radius2 bg-dark icon">
+        class="mr0 whitespace-nowrap justify-center items-center inline-flex radius3 bg-dark icon">
         <hockey-icon
           style="width: 2.5rem;"
           class="color-fill-dark"
