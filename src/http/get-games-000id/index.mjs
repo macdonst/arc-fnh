@@ -47,29 +47,28 @@ async function gameStatus(req) {
         game.facility
       }</h1>
       <form form method="post" action="/games/${id}">
-        <hockey-table>
-          <table>
-            <thead>
-              <tr><th>Name</th><th>Position</th><th>Away</th><th>Spare</th></tr>
-            </thead>
-            <tbody>
+        <enhance-table>
+            <enhance-thead>
+              <enhance-tr><enhance-th>Name</enhance-th><enhance-th>Position</enhance-th><enhance-th>Away</enhance-th><enhance-th>Spare</enhance-th></enhance-tr>
+            </enhance-thead>
+            <enhance-tbody>
               ${[...skaters, ...goalies]
                 .map(function (player) {
                   const cancelled = game.cancellations?.includes(player.email)
                   const spare = cancelled ? game.spares?.shift() : ''
-                  return `<tr>
-                    <td class="${cancelled ? 'strikethrough' : ''}">
+                  return `<enhance-tr>
+                    <enhance-td class="${cancelled ? 'strikethrough' : ''}">
                       ${player.name}
-                    </td>
-                    <td class="capitalize">
+                    </enhance-td>
+                    <enhance-td class="capitalize">
                       ${player.position}
-                    </td>
-                    <td>
+                    </enhance-td>
+                    <enhance-td>
                       <input type="checkbox" name="cancellations" value="${
                         player.email
                       }" ${cancelled ? 'checked' : ''}/>
-                    </td>
-                    <td>
+                    </enhance-td>
+                    <enhance-td>
                       ${
                         cancelled && player.position !== 'goalie'
                           ? createSelectBox(spareSkaters, spare)
@@ -80,14 +79,13 @@ async function gameStatus(req) {
                           ? createSelectBox(spareGoalies, spare)
                           : ''
                       }
-                    </td>
-                  </tr>`
+                    </enhance-td>
+                  </enhance-tr>`
                 })
                 .join('')}
-            </tbody>
-          </table>
-          <hockey-save-button></hockey-save-button>
-        </hockey-table>
+            </enhance-tbody>
+          </enhance-table>
+            <hockey-save-button></hockey-save-button>
       <form>
 
     </hockey-page>

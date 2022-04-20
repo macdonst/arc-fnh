@@ -18,32 +18,30 @@ async function players(req) {
         <hockey-action-button action="/seasons/add" icon="plus" label="Add" type="link" variant="default"></hockey-action-button>
       </hockey-action-buttons>
 
-      <hockey-table>
-        <table>
-          <thead>
-            <tr><th>Name</th><th>Start Date</th><th>End Date</th><th>Cost</th><th>Actions</th></tr>
-          </thead>
-          <tbody>
+      <enhance-table>
+          <enhance-thead>
+            <enhance-tr><enhance-th>Name</enhance-th><enhance-th>Start Date</enhance-th><enhance-th>End Date</enhance-th><enhance-th>Cost</enhance-th><enhance-th>Actions</enhance-th></enhance-tr>
+          </enhance-thead>
+          <enhance-tbody>
             ${seasons
               .map(
                 (season) =>
-                  `<tr>
-                  <td><a href="/games?season=${season.seasonID}">${season.name}</a></td>
-                  <td>${season.startDate}</td>
-                  <td>${season.endDate}</td>
-                  <td>${season.cost}</td>
-                  <td>
+                  `<enhance-tr>
+                  <enhance-td><a href="/games?season=${season.seasonID}">${season.name}</a></enhance-td>
+                  <enhance-td>${season.startDate}</enhance-td>
+                  <enhance-td>${season.endDate}</enhance-td>
+                  <enhance-td>${season.cost}</enhance-td>
+                  <enhance-td>
                     <hockey-action-buttons>
                       <hockey-action-button action="/seasons/add?id=${season.seasonID}" icon="write" type="link"></hockey-action-button>
                       <hockey-action-button action="/seasons/${season.seasonID}/delete" icon="delete"></hockey-action-button>
                     </hockey-action-buttons>
-                  </td>
-                </tr>`
+                  </enhance-td>
+                </enhance-tr>`
               )
               .join('')}
-          </tbody>
-        </table>
-      </hockey-table>
+          </enhance-tbody>
+      </enhance-table>
     </hockey-page>
 `,
       initialState

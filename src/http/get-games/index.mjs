@@ -18,31 +18,29 @@ async function games(req) {
       <hockey-action-buttons direction="row-reverse">
         <hockey-action-button action="/games/add" icon="plus" label="Add" type="link" variant="default"></hockey-action-button>
       </hockey-action-buttons>
-      <hockey-table>
-        <table>
-          <thead>
-            <tr><th>Date</th><th>Time</th><th>Facility</th><th>Actions</th></tr>
-          </thead>
-          <tbody>
+      <enhance-table>
+          <enhance-thead>
+            <enhance-tr><enhance-th>Date</enhance-th><enhance-th>Time</enhance-th><enhance-th>Facility</enhance-th><enhance-th>Actions</enhance-th></enhance-tr>
+          </enhance-thead>
+          <enhance-tbody>
             ${games
               .map(
                 (game) =>
-                  `<tr>
-                    <td><a href="/games/${game.gamedate}">${game.gamedate}</a></td>
-                    <td>${game.time}</td>
-                    <td>${game.facility}</td>
-                    <td>
+                  `<enhance-tr>
+                    <enhance-td><a href="/games/${game.gamedate}">${game.gamedate}</a></enhance-td>
+                    <enhance-td>${game.time}</enhance-td>
+                    <enhance-td>${game.facility}</enhance-td>
+                    <enhance-td>
                       <hockey-action-buttons>
                         <hockey-action-button action="/games/add?id=${game.gamedate}" icon="write" type="link"></hockey-action-button>
                         <hockey-action-button action="/games/${game.gamedate}/delete" icon="delete"></hockey-action-button>
                       </hockey-action-buttons>
-                    </td>
-                  </tr>`
+                    </enhance-td>
+                  </enhance-tr>`
               )
               .join('')}
-          </tbody>
-        <table>
-      </hockey-table>
+          </enhance-tbody>
+      </enhance-table>
     </hockey-page>
   `,
       initialState

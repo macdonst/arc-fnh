@@ -20,27 +20,26 @@ async function players(req) {
         <hockey-action-button action="/players/add" icon="plus" label="Add" type="link" variant="default"></hockey-action-button>
       </hockey-action-buttons>
 
-      <hockey-table>
-        <table>
-          <thead>
-            <tr><th>Name</th><th>Email</th><th>Phone</th><th>Position</th><th>Actions</th></tr>
-          </thead>
-          <tbody>
+      <enhance-table>
+          <enhance-thead>
+            <enhance-tr><enhance-th>Name</enhance-th><enhance-th>Email</enhance-th><enhance-th>Phone</enhance-th><enhance-th>Position</enhance-th><enhance-th>Actions</enhance-th></enhance-tr>
+          </enhance-thead>
+          <enhance-tbody>
             ${players
               .map(
                 (player) =>
-                  `<tr>
-                  <td><a href="/players/add?id=${player.email}">${
+                  `<enhance-tr>
+                  <enhance-td><a href="/players/add?id=${player.email}">${
                     player.name
                   } ${
                     player.preferred === 'true'
                       ? `<hockey-icon icon="star" style="width: 1rem; height: 1rem; display: inline;"></hockey-icon>`
                       : ''
-                  }</a></td>
-                  <td>${player.email}</td>
-                  <td>${player.phone}</td>
-                  <td class="capitalize">${player.position}</td>
-                  <td>
+                  }</a></enhance-td>
+                  <enhance-td>${player.email}</enhance-td>
+                  <enhance-td>${player.phone}</enhance-td>
+                  <enhance-td class="capitalize">${player.position}</enhance-td>
+                  <enhance-td>
                     <hockey-action-buttons>
                       <hockey-action-button action="/players/add?id=${
                         player.email
@@ -49,13 +48,12 @@ async function players(req) {
                         player.email
                       }/delete" icon="delete"></hockey-action-button>
                     </hockey-action-buttons>
-                  </td>
-                </tr>`
+                  </enhance-td>
+                </enhance-tr>`
               )
               .join('')}
-          </tbody>
-        </table>
-      </hockey-table>
+          </enhance-tbody>
+      </enhance-table>
     </hockey-page>
 `,
       initialState
