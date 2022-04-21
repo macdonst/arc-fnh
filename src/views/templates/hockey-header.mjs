@@ -12,6 +12,7 @@ export default function HockeyHeaderTemplate({ html, state = {} }) {
     z1
     color-dark
     color-hover-darkest
+    shadow0
   ">
       <header
         class="
@@ -26,7 +27,7 @@ export default function HockeyHeaderTemplate({ html, state = {} }) {
     bg-p5
     text-g0
     overflow-hidden
-    bg-light
+    bg-lighter
   ">
         <div
           class="
@@ -81,14 +82,14 @@ export default function HockeyHeaderTemplate({ html, state = {} }) {
         bg-p5
         radius1
         radius-tr-none
-        radous-br-none
+        radius-br-none
         overflow-hidden
         overflow-visible-lg
         menu-transition
         menu-closed
         z-1
         z0-lg
-        bg-light
+        bg-lighter
       ">
             <span
               class="

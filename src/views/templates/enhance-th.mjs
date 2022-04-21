@@ -9,7 +9,7 @@ export default function EnhanceTH({ html }) {
         display: table-cell;
       }
     </style>
-    <div class="th p0 m-none text-left sticky font-bold color-grey top0">
+    <div class="th p-1 m-none text-left sticky font-bold color-grey top0">
       <slot></slot>
     </div>
   `
