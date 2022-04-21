@@ -22,7 +22,7 @@ async function players(req) {
 
       <enhance-table>
           <enhance-thead>
-            <enhance-tr><enhance-th>Name</enhance-th><enhance-th>Email</enhance-th><enhance-th>Phone</enhance-th><enhance-th>Position</enhance-th><enhance-th>Actions</enhance-th></enhance-tr>
+            <enhance-tr><enhance-th>Name</enhance-th><enhance-th class="unseen">Email</enhance-th><enhance-th class="unseen">Phone</enhance-th><enhance-th>Position</enhance-th><enhance-th>Actions</enhance-th></enhance-tr>
           </enhance-thead>
           <enhance-tbody>
             ${players
@@ -36,8 +36,8 @@ async function players(req) {
                       ? `<hockey-icon icon="star" style="width: 1rem; height: 1rem; display: inline;"></hockey-icon>`
                       : ''
                   }</a></enhance-td>
-                  <enhance-td>${player.email}</enhance-td>
-                  <enhance-td>${player.phone}</enhance-td>
+                  <enhance-td class="unseen">${player.email}</enhance-td>
+                  <enhance-td class="unseen">${player.phone}</enhance-td>
                   <enhance-td class="capitalize">${player.position}</enhance-td>
                   <enhance-td>
                     <hockey-action-buttons>

@@ -49,7 +49,7 @@ async function gameStatus(req) {
       <form form method="post" action="/games/${id}">
         <enhance-table>
             <enhance-thead>
-              <enhance-tr><enhance-th>Name</enhance-th><enhance-th>Position</enhance-th><enhance-th>Away</enhance-th><enhance-th>Spare</enhance-th></enhance-tr>
+              <enhance-tr><enhance-th>Name</enhance-th><enhance-th class="unseen">Position</enhance-th><enhance-th>Away</enhance-th><enhance-th>Spare</enhance-th></enhance-tr>
             </enhance-thead>
             <enhance-tbody>
               ${[...skaters, ...goalies]
@@ -60,7 +60,7 @@ async function gameStatus(req) {
                     <enhance-td class="${cancelled ? 'strikethrough' : ''}">
                       ${player.name}
                     </enhance-td>
-                    <enhance-td class="capitalize">
+                    <enhance-td class="capitalize unseen">
                       ${player.position}
                     </enhance-td>
                     <enhance-td>

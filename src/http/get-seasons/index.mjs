@@ -20,7 +20,13 @@ async function players(req) {
 
       <enhance-table>
           <enhance-thead>
-            <enhance-tr><enhance-th>Name</enhance-th><enhance-th>Start Date</enhance-th><enhance-th>End Date</enhance-th><enhance-th>Cost</enhance-th><enhance-th>Actions</enhance-th></enhance-tr>
+            <enhance-tr>
+              <enhance-th>Name</enhance-th>
+              <enhance-th>Start Date</enhance-th>
+              <enhance-th>End Date</enhance-th>
+              <enhance-th class="unseen">Cost</enhance-th>
+              <enhance-th>Actions</enhance-th>
+            </enhance-tr>
           </enhance-thead>
           <enhance-tbody>
             ${seasons
@@ -30,7 +36,7 @@ async function players(req) {
                   <enhance-td><a href="/games?season=${season.seasonID}">${season.name}</a></enhance-td>
                   <enhance-td>${season.startDate}</enhance-td>
                   <enhance-td>${season.endDate}</enhance-td>
-                  <enhance-td>${season.cost}</enhance-td>
+                  <enhance-td class="unseen">${season.cost}</enhance-td>
                   <enhance-td>
                     <hockey-action-buttons>
                       <hockey-action-button action="/seasons/add?id=${season.seasonID}" icon="write" type="link"></hockey-action-button>
