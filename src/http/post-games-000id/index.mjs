@@ -17,6 +17,13 @@ async function http(req) {
 
   await upsertGame(game)
 
+  await arc.events.publish({
+    name: 'find-spares',
+    payload: {
+      game
+    }
+  })
+
   return {
     location: `/games/${id}`
   }

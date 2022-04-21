@@ -86,6 +86,27 @@ const listPlayersNames = function (players = []) {
     .join(', ')
 }
 
+function sparesNeeded(players, cancellations, spares) {
+  const total = players - cancellations + spares - 20
+  return total < 0 ? total * -1 : 0
+}
+
+async function numberOfSparesNeeded(game) {
+  const players = await getFulltimeSkaters()
+  const cancellations = (await getPlayerInfo(game.cancellations)).filter(
+    (player) => player.position !== 'goalie'
+  )
+  const spares = await getPlayerInfo(game.spares)
+  const goalies = await getGoalies(game.cancellations, spares)
+  const short = sparesNeeded(
+    players.length,
+    cancellations.length,
+    spares.filter((player) => player !== undefined).length
+  )
+
+  return { skaters: short, goalies: 2 - goalies.length }
+}
+
 export {
   deletePlayer,
   getPlayer,
@@ -95,5 +116,7 @@ export {
   upsertPlayer,
   getPlayerInfo,
   getGoalies,
-  listPlayersNames
+  listPlayersNames,
+  sparesNeeded,
+  numberOfSparesNeeded
 }

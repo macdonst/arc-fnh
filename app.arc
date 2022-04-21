@@ -32,6 +32,9 @@ post /seasons
 post /seasons/delete
 post /seasons/:id/delete
 
+@events
+find-spares
+
 @scheduled
 weekly-reminder cron(0 8 ? * WED *)
 weekly-roster cron(0 10 ? * FRI *)
