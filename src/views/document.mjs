@@ -154,6 +154,11 @@ export default function Document(body = '') {
       .hoverTable enhance-tbody .enhance-tbody enhance-tr .enhance-tr:hover {
         background-color: var(--grey1);
       }
+      @media only screen and (max-width: 27.5em) {
+        .unseen {
+          display: none;
+        }
+      }
     </style>
     </head>
     <body class="font-sans color-dark bg-light">

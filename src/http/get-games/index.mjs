@@ -27,7 +27,7 @@ async function games(req) {
               .map(
                 (game) =>
                   `<enhance-tr>
-                    <enhance-td><a href="/games/${game.gamedate}">${game.gamedate}</a></enhance-td>
+                    <enhance-td><a class="color-blue" href="/games/${game.gamedate}">${game.gamedate}</a></enhance-td>
                     <enhance-td>${game.time}</enhance-td>
                     <enhance-td>${game.facility}</enhance-td>
                     <enhance-td>

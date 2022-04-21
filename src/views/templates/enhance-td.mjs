@@ -9,7 +9,7 @@ export default function EnhanceTD({ html }) {
         display: table-cell;
       }
     </style>
-    <div class="enhance-td p-1 m-none text-left">
+    <div class="enhance-td pt-1 pb-1 pr0 pl0 m-none text-left">
       <slot></slot>
     </div>
   `

@@ -33,7 +33,7 @@ async function players(req) {
               .map(
                 (season) =>
                   `<enhance-tr>
-                  <enhance-td><a href="/games?season=${season.seasonID}">${season.name}</a></enhance-td>
+                  <enhance-td><a class="color-blue" href="/games?season=${season.seasonID}">${season.name}</a></enhance-td>
                   <enhance-td>${season.startDate}</enhance-td>
                   <enhance-td>${season.endDate}</enhance-td>
                   <enhance-td class="unseen">${season.cost}</enhance-td>

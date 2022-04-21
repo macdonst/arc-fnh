@@ -29,9 +29,9 @@ async function players(req) {
               .map(
                 (player) =>
                   `<enhance-tr>
-                  <enhance-td><a href="/players/add?id=${player.email}">${
-                    player.name
-                  } ${
+                  <enhance-td><a class="color-blue" href="/players/add?id=${
+                    player.email
+                  }">${player.name} ${
                     player.preferred === 'true'
                       ? `<hockey-icon icon="star" style="width: 1rem; height: 1rem; display: inline;"></hockey-icon>`
                       : ''
@@ -41,9 +41,6 @@ async function players(req) {
                   <enhance-td class="capitalize">${player.position}</enhance-td>
                   <enhance-td>
                     <hockey-action-buttons>
-                      <hockey-action-button action="/players/add?id=${
-                        player.email
-                      }" icon="write" type="link"></hockey-action-button>
                       <hockey-action-button action="/players/${
                         player.email
                       }/delete" icon="delete"></hockey-action-button>
