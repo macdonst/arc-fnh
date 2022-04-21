@@ -1,5 +1,5 @@
 import nodemailer from 'nodemailer'
-import { OAuth2Client } from 'google-auth-library'
+import { authenticate } from '@architect/shared/google/index.mjs'
 import { getNextGame } from '@architect/shared/db/games.mjs'
 import {
   getGoalies,
@@ -70,19 +70,11 @@ export async function handler() {
 
   const subject = await createSubject(next)
 
-  const oauth2Client = new OAuth2Client(
+  const { accessToken } = await authenticate({
     clientId,
     clientSecret,
-    'https://developers.google.com/oauthplayground'
-  )
-
-  oauth2Client.setCredentials({ refresh_token })
-
-  const { Authorization } = await oauth2Client.getRequestHeaders()
-  const accessToken =
-    Authorization?.split(' ')[0] === 'Bearer'
-      ? Authorization.split(' ')[1]
-      : null
+    refresh_token
+  })
 
   const smtpTransport = nodemailer.createTransport({
     service: 'gmail',
