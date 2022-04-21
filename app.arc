@@ -31,6 +31,7 @@ post /seasons/:id/delete
 
 @scheduled
 weekly-reminder cron(0 8 ? * WED *)
+weekly-roster cron(0 10 ? * FRI *)
 
 @plugins
 arc-plugin-oauth
