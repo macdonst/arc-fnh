@@ -32,6 +32,7 @@ export async function handler() {
   )
   const spares = game.spares ? await getPlayerInfo(game.spares) : []
   const playing = [...players, ...spares]
+  console.log(playing)
 
   const resource = {
     properties: {
@@ -60,12 +61,16 @@ async function appendValues(spreadsheetId, players, sheets) {
   const valueInputOption = 'USER_ENTERED'
   const range = 'Sheet1!A1'
 
+  console.log('appendValues')
+
   let resource = {
     values: players.map((player, i) => {
-      if (i !== 0) {
-        return ['', '', '', player.name]
-      } else {
-        return ['White', 'Dark', '', player.name]
+      if (player) {
+        if (i !== 0) {
+          return ['', '', '', player.name]
+        } else {
+          return ['White', 'Dark', '', player.name]
+        }
       }
     })
   }
