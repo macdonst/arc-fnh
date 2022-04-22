@@ -92,12 +92,13 @@ function sparesNeeded(players, cancellations, spares) {
 }
 
 async function numberOfSparesNeeded(game) {
+  let { cancellations = [], spares = [] } = game
   const players = await getFulltimeSkaters()
-  const cancellations = (await getPlayerInfo(game.cancellations)).filter(
+  cancellations = (await getPlayerInfo(cancellations)).filter(
     (player) => player.position !== 'goalie'
   )
-  const spares = await getPlayerInfo(game.spares)
-  const goalies = await getGoalies(game.cancellations, spares)
+  spares = await getPlayerInfo(spares)
+  const goalies = await getGoalies(cancellations, spares)
   const short = sparesNeeded(
     players.length,
     cancellations.length,
