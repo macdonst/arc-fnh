@@ -61,8 +61,6 @@ async function appendValues(spreadsheetId, players, sheets) {
   const valueInputOption = 'USER_ENTERED'
   const range = 'Sheet1!A1'
 
-  console.log('appendValues')
-
   let resource = {
     values: players.map((player, i) => {
       if (player) {
