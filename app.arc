@@ -13,6 +13,7 @@ get /players
 get /players/add
 post /players
 post /players/:id/delete
+post /players/delete
 
 get /games
 get /games/add

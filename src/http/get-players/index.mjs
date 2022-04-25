@@ -15,43 +15,46 @@ async function players(req) {
   return {
     html: render(
       `
-    <hockey-page>
-      <hockey-action-buttons direction="row-reverse">
-        <hockey-action-button action="/players/add" icon="plus" label="Add" type="link" variant="default"></hockey-action-button>
-      </hockey-action-buttons>
+    <form method="POST" action="/players/delete">
+      <hockey-page>
+        <hockey-action-buttons direction="row-reverse">
+          <hockey-button icon="delete">Delete</hockey-button>
+          <hockey-action-button action="/players/add" icon="plus" label="Add" type="link" variant="default"></hockey-action-button>
+        </hockey-action-buttons>
 
-      <enhance-table>
-          <enhance-thead>
-            <enhance-tr><enhance-th>Name</enhance-th><enhance-th class="unseen">Email</enhance-th><enhance-th class="unseen">Phone</enhance-th><enhance-th>Position</enhance-th><enhance-th>Actions</enhance-th></enhance-tr>
-          </enhance-thead>
-          <enhance-tbody>
-            ${players
-              .map(
-                (player) =>
-                  `<enhance-tr>
-                  <enhance-td><a class="color-blue" href="/players/add?id=${
-                    player.email
-                  }">${player.name} ${
-                    player.preferred === 'true'
-                      ? `<hockey-icon icon="star" style="width: 1rem; height: 1rem; display: inline;"></hockey-icon>`
-                      : ''
-                  }</a></enhance-td>
-                  <enhance-td class="unseen">${player.email}</enhance-td>
-                  <enhance-td class="unseen">${player.phone}</enhance-td>
-                  <enhance-td class="capitalize">${player.position}</enhance-td>
-                  <enhance-td>
-                    <hockey-action-buttons>
-                      <hockey-action-button action="/players/${
+        <enhance-table>
+            <enhance-thead>
+              <enhance-tr><enhance-th>&nbsp;</enhance-th><enhance-th>Name</enhance-th><enhance-th class="unseen">Email</enhance-th><enhance-th class="unseen">Phone</enhance-th><enhance-th>Position</enhance-th></enhance-tr>
+            </enhance-thead>
+            <enhance-tbody>
+              ${players
+                .map(
+                  (player) =>
+                    `<enhance-tr>
+                    <enhance-td>
+                      <input type="checkbox" name="todelete" class="leading5-l pt-3 pb-3 pl-1 pr-1 radius2 shadow-2" value="${
                         player.email
-                      }/delete" icon="delete"></hockey-action-button>
-                    </hockey-action-buttons>
-                  </enhance-td>
-                </enhance-tr>`
-              )
-              .join('')}
-          </enhance-tbody>
-      </enhance-table>
-    </hockey-page>
+                      }"/>
+                    </enhance-td>
+                    <enhance-td><a class="color-blue" href="/players/add?id=${
+                      player.email
+                    }">${player.name} ${
+                      player.preferred === 'true'
+                        ? `<hockey-icon icon="star" style="width: 1rem; height: 1rem; display: inline;"></hockey-icon>`
+                        : ''
+                    }</a></enhance-td>
+                    <enhance-td class="unseen">${player.email}</enhance-td>
+                    <enhance-td class="unseen">${player.phone}</enhance-td>
+                    <enhance-td class="capitalize">${
+                      player.position
+                    }</enhance-td>
+                  </enhance-tr>`
+                )
+                .join('')}
+            </enhance-tbody>
+        </enhance-table>
+      </hockey-page>
+    </form>
 `,
       initialState
     )

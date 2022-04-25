@@ -12,6 +12,7 @@ import HockeyCircularIconTemplate from './templates/hockey-circular-icon.mjs'
 import HockeyContentCardTemplate from './templates/hockey-content-card.mjs'
 import HockeyHeaderTabTemplate from './templates/hockey-header-tab.mjs'
 import HockeyIcon from './templates/hockey-icon.mjs'
+import HockeyButton from './templates/hockey-button.mjs'
 import EnhanceTable from './templates/enhance-table.mjs'
 import EnhanceTHead from './templates/enhance-thead.mjs'
 import EnhanceTBody from './templates/enhance-tbody.mjs'
@@ -34,6 +35,7 @@ export default {
   'hockey-content-card': HockeyContentCardTemplate,
   'hockey-header-tab': HockeyHeaderTabTemplate,
   'hockey-icon': HockeyIcon,
+  'hockey-button': HockeyButton,
   'enhance-table': EnhanceTable,
   'enhance-thead': EnhanceTHead,
   'enhance-tbody': EnhanceTBody,
