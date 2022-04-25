@@ -21,6 +21,7 @@ get /games/:id
 post /games
 post /games/:id
 post /games/:id/delete
+post /games/delete
 
 get /import
 post /import
@@ -28,6 +29,7 @@ post /import
 get /seasons
 get /seasons/add
 post /seasons
+post /seasons/delete
 post /seasons/:id/delete
 
 @scheduled
