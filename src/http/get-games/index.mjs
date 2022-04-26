@@ -24,7 +24,7 @@ async function games(req) {
       <enhance-table>
           <enhance-thead>
             <enhance-tr>
-              <enhance-th>&nbsp;</enhance-th>
+              <enhance-th width="1rem">&nbsp;</enhance-th>
               <enhance-th>Date</enhance-th>
               <enhance-th>Time</enhance-th>
               <enhance-th>Facility</enhance-th>

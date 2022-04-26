@@ -23,7 +23,7 @@ async function players(req) {
       <enhance-table>
           <enhance-thead>
             <enhance-tr>
-              <enhance-th>&nbsp;</enhance-th>
+              <enhance-th width="1rem">&nbsp;</enhance-th>
               <enhance-th>Name</enhance-th>
               <enhance-th>Start Date</enhance-th>
               <enhance-th>End Date</enhance-th>
