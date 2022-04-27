@@ -47,6 +47,10 @@ async function gameStatus(req) {
         game.facility
       }</h1>
       <form form method="post" action="/games/${id}">
+        <hockey-action-buttons direction="row-reverse">
+          <hockey-button icon="save">Save</hockey-button>
+          <hockey-action-button action="/games/add?id=${id}" icon="write" label="Edit" type="link" variant="default" >Edit</hockey-action-button>
+        </hockey-action-buttons>
         <enhance-table>
             <enhance-thead>
               <enhance-tr><enhance-th>Name</enhance-th><enhance-th class="unseen">Position</enhance-th><enhance-th>Away</enhance-th><enhance-th>Spare</enhance-th></enhance-tr>
@@ -85,7 +89,6 @@ async function gameStatus(req) {
                 .join('')}
             </enhance-tbody>
           </enhance-table>
-            <hockey-save-button></hockey-save-button>
       <form>
 
     </hockey-page>

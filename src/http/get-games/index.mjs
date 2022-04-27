@@ -1,6 +1,7 @@
 import arc from '@architect/functions'
 import render from '@architect/views/render.mjs'
 import { getGames, getGamesBySeason } from '@architect/shared/db/games.mjs'
+import { getSeason } from '@architect/shared/db/seasons.mjs'
 import arcOauth from 'arc-plugin-oauth'
 const auth = arcOauth.auth
 
@@ -8,6 +9,7 @@ export const handler = arc.http.async(auth, games)
 
 async function games(req) {
   const { season } = req.query
+  const seasonObj = await getSeason(season)
   const games = season ? await getGamesBySeason(season) : await getGames()
   const initialState = { account: req.session?.account }
 
@@ -17,8 +19,14 @@ async function games(req) {
   <form method="POST" action="/games/delete">
     <input type="hidden" name="season" value="${season}"/>
     <hockey-page>
+      <h1 class="mb-3 fw-medium fs1 c-p1 text1 color-darkest">${
+        seasonObj.name
+      }</h1>
       <hockey-action-buttons direction="row-reverse">
         <hockey-button icon="delete">Delete</hockey-button>
+        <hockey-action-button action="/seasons/add?id=${
+          seasonObj.seasonID
+        }" icon="write" label="Edit" type="link" variant="default">Edit</hockey-action-button>
         <hockey-action-button action="/games/add" icon="plus" label="Add" type="link" variant="default"></hockey-action-button>
       </hockey-action-buttons>
       <enhance-table>
