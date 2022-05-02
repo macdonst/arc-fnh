@@ -57,6 +57,11 @@ games
 seasons
   seasonID *String
 
+invites
+  inviteID *String
+  email **String
+  expiresAt TTL
+
 @tables-indexes
 players
   fulltime *String
@@ -70,6 +75,9 @@ seasons
   seasonID *String
   name seasonsByID
 
+invites
+  email *String
+  name invitesByEmail
 
 @aws
 # profile default

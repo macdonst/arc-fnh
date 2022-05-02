@@ -61,6 +61,11 @@ const getSpares = async function () {
   return getPlayers('false')
 }
 
+const getPreferredSpares = async function () {
+  const spares = await getPlayers('false')
+  return spares.filter((spare) => spare.preferred)
+}
+
 const getPlayerInfo = async function (players = []) {
   return Promise.all(players.map((player) => getPlayer(player)))
 }
@@ -114,6 +119,7 @@ export {
   getFulltimePlayers,
   getFulltimeSkaters,
   getSpares,
+  getPreferredSpares,
   upsertPlayer,
   getPlayerInfo,
   getGoalies,
