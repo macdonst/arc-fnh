@@ -8,31 +8,13 @@ import {
   listPlayersNames
 } from '@architect/shared/db/players.mjs'
 import { getSeasonWithGame } from '@architect/shared/db/seasons.mjs'
-
-function convertTo12Hour(timestring) {
-  return new Date('1970-01-01T' + timestring + 'Z').toLocaleTimeString(
-    'en-US',
-    {
-      timeZone: 'UTC',
-      hour12: true,
-      hour: 'numeric',
-      minute: 'numeric'
-    }
-  )
-}
+import { convertTo12Hour, dateToEnglish } from '@architect/shared/utils.mjs'
 
 async function createSubject(next) {
-  const date = new Date(next.gamedate)
-  const dayOfWeek = date.toLocaleDateString('en-US', { weekday: 'long' })
-  const month = date.toLocaleDateString('en-US', { month: 'long' })
-  const timeString12hr = convertTo12Hour(next.time)
+  const { dayOfWeek, month, dayOfMonth, time } = dateToEnglish(next)
   const season = await getSeasonWithGame(next.gamedate)
 
-  return `${
-    season.name
-  }: ${dayOfWeek} ${month} ${date.getDate()} ${timeString12hr} at ${
-    next.facility
-  }`
+  return `${season.name}: ${dayOfWeek} ${month} ${dayOfMonth} ${time} at ${next.facility}`
 }
 
 function generateBody({ game, cancellations, goalies, spares }) {

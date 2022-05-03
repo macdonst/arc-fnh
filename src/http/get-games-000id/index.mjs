@@ -3,6 +3,8 @@ import render from '@architect/views/render.mjs'
 import { getFulltimePlayers, getSpares } from '@architect/shared/db/players.mjs'
 import arcOauth from 'arc-plugin-oauth'
 import { getGame } from '@architect/shared/db/games.mjs'
+import { dateToEnglish } from '@architect/shared/utils.mjs'
+
 const auth = arcOauth.auth
 
 export const handler = arc.http.async(auth, gameStatus)
@@ -28,9 +30,7 @@ async function gameStatus(req) {
   const initialState = { account: req.session?.account }
   const id = req.pathParameters?.id
   const game = await getGame(id)
-  const date = new Date(game.gamedate)
-  const dayOfWeek = date.toLocaleDateString('en-US', { weekday: 'long' })
-  const month = date.toLocaleDateString('en-US', { month: 'long' })
+  const { dayOfWeek, month, dayOfMonth } = dateToEnglish(game)
 
   const players = await getFulltimePlayers()
   const skaters = players.filter((player) => player.position !== 'goalie')
@@ -43,7 +43,7 @@ async function gameStatus(req) {
     html: render(
       `
     <hockey-page>
-      <h1 class="mb-3 fw-medium fs1 c-p1 text1 color-darkest">${dayOfWeek} ${month} ${date.getDate()} at ${
+      <h1 class="mb-3 fw-medium fs1 c-p1 text1 color-darkest">${dayOfWeek} ${month} ${dayOfMonth} at ${
         game.facility
       }</h1>
       <form form method="post" action="/games/${id}">

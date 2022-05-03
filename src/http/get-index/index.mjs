@@ -8,6 +8,8 @@ import {
 } from '@architect/shared/db/players.mjs'
 import render from '@architect/views/render.mjs'
 import arcOauth from 'arc-plugin-oauth'
+import { dateToEnglish } from '@architect/shared/utils.mjs'
+
 const auth = arcOauth.auth
 
 export const handler = arc.http.async(auth, index)
@@ -31,9 +33,7 @@ async function index(req) {
       )
     }
   }
-  const date = new Date(next.gamedate)
-  const dayOfWeek = date.toLocaleDateString('en-US', { weekday: 'long' })
-  const month = date.toLocaleDateString('en-US', { month: 'long' })
+  const { dayOfWeek, month, dayOfMonth } = dateToEnglish(next)
 
   const cancellations = await getPlayerInfo(next.cancellations)
   const spares = await getPlayerInfo(next.spares)
@@ -50,7 +50,7 @@ async function index(req) {
               <p class="mb1 fs0 fw-book c-p1">
                 <a href="/games/${
                   next.gamedate
-                }">${dayOfWeek} ${month} ${date.getDate()} at ${next.facility}
+                }">${dayOfWeek} ${month} ${dayOfMonth} at ${next.facility}
                 </a>
               </p>
               <p class="mb1 fs0 fw-book c-p1">
