@@ -1,6 +1,9 @@
 import arc from '@architect/functions'
 import render from '@architect/views/render.mjs'
-import { getPlayer } from '@architect/shared/db/players.mjs'
+import {
+  getPlayer,
+  numberOfSparesNeeded
+} from '@architect/shared/db/players.mjs'
 import { getGame, upsertGame } from '@architect/shared/db/games.mjs'
 import { deleteInvite, getInvite } from '@architect/shared/db/invites.mjs'
 import { dateToEnglish } from '@architect/shared/utils.mjs'
@@ -22,6 +25,17 @@ async function inviteStatus(req) {
 
   const player = await getPlayer(invite.email)
   const game = await getGame(invite.gameID)
+
+  const sparesNeeded = await numberOfSparesNeeded(game)
+  if (sparesNeeded.skaters <= 0) {
+    await deleteInvite(id)
+    return {
+      html: render(`
+      <hockey-message>
+        <h1 slot="message">Sorry, I filled all the spare spots.</h1>
+      </hockey-message>`)
+    }
+  }
 
   if (attend === 'yes') {
     if (game.spares.length === 0) {
