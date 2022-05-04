@@ -22,7 +22,7 @@ async function findSpares(event) {
 
   const sparesNeeded = await numberOfSparesNeeded(game)
 
-  console.log(sparesNeeded)
+  console.log('sparesNeeded', sparesNeeded)
 
   if (sparesNeeded.skaters > 0) {
     // convert game time to timestamp
@@ -33,21 +33,30 @@ async function findSpares(event) {
     // do we need to invite anyone
     if (currentInvites.length < sparesNeeded.skaters) {
       const invitesNeeded = sparesNeeded.skaters - currentInvites.length
-      console.log(invitesNeeded)
+      console.log('invitesNeeded', invitesNeeded)
 
       const spares = await queryPreferredSpares(currentInvites)
 
+      console.log('spares', spares)
+
       const englishDate = dateToEnglish(game)
 
-      for (let i = 0; i < invitesNeeded; i++) {
-        if (spares.length > 0) {
-          let spare = spares.pop()
+      console.log(game)
+
+      let count = 0
+      while (spares.length > 0 && count < invitesNeeded) {
+        let spare = spares.pop()
+        if (
+          !game.declined?.includes(spare.email) &&
+          !game.spares?.includes(spare.email)
+        ) {
+          console.log('inviting', spare.email)
+          count++
           const invite = await upsertInvite({
             email: spare.email,
             gameID: game.gamedate,
             expiresAt: gameTime
           })
-
           // send email at this point
           await arc.events.publish({
             name: 'send-email',
@@ -67,8 +76,6 @@ async function findSpares(event) {
           })
         }
       }
-
-      console.log(spares)
     }
   }
 
