@@ -26,6 +26,8 @@ post /games/delete
 get /import
 post /import
 
+get /invite/:id
+
 get /seasons
 get /seasons/add
 post /seasons
@@ -34,6 +36,7 @@ post /seasons/:id/delete
 
 @events
 find-spares
+send-email
 
 @scheduled
 weekly-reminder cron(0 8 ? * WED *)
@@ -59,7 +62,6 @@ seasons
 
 invites
   inviteID *String
-  email **String
   expiresAt TTL
 
 @tables-indexes
@@ -75,9 +77,9 @@ seasons
   seasonID *String
   name seasonsByID
 
-invites
-  email *String
-  name invitesByEmail
+# invites
+#  email *String
+#  name invitesByEmail
 
 @aws
 # profile default

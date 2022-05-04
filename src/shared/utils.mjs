@@ -20,4 +20,17 @@ function dateToEnglish(game) {
   }
 }
 
-export { convertTo12Hour, dateToEnglish }
+function getHostname() {
+  if (
+    process.env.ARC_ENV === 'production' ||
+    process.env.NODE_ENV === 'production'
+  ) {
+    return 'https://er2xpiegaj.execute-api.us-west-2.amazonaws.com/'
+  }
+  if (process.env.ARC_ENV === 'staging' || process.env.NODE_ENV === 'staging') {
+    return 'https://bb2smqni8c.execute-api.us-west-2.amazonaws.com/'
+  }
+  return 'http://localhost:3333/'
+}
+
+export { convertTo12Hour, dateToEnglish, getHostname }
