@@ -30,15 +30,23 @@ async function inviteStatus(req) {
       let idx = game.spares.indexOf('none')
       game.spares[idx] = invite.email
     }
+    await upsertGame(game)
+    await deleteInvite(id)
   } else {
     if (game.declined) {
       game.declined.push(invite.email)
     } else {
       game.declined = [invite.email]
     }
+    await upsertGame(game)
+    await deleteInvite(id)
+    await arc.events.publish({
+      name: 'find-spares',
+      payload: {
+        game
+      }
+    })
   }
-  await upsertGame(game)
-  await deleteInvite(id)
 
   const message = await createResponse(attend, player, game)
 
