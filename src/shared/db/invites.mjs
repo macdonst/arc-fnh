@@ -40,13 +40,15 @@ const getInviteByEmail = async function (email) {
   return invite
 }
 
-const getCurrentInvites = async function (gamedate) {
+const getCurrentInvites = async function ({ gamedate, time }) {
   const db = await arc.tables()
+
+  const gameTime = new Date(`${gamedate} ${time}:00`).getTime()
 
   let invites = await db.invites.scan({
     FilterExpression: 'expiresAt <= :gamedate',
     ExpressionAttributeValues: {
-      ':gamedate': gamedate
+      ':gamedate': gameTime
     }
   })
 

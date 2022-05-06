@@ -3,10 +3,12 @@ import render from '@architect/views/render.mjs'
 import {
   getFulltimePlayers,
   getPlayerInfo,
+  getPlayer,
   getSpares
 } from '@architect/shared/db/players.mjs'
 import arcOauth from 'arc-plugin-oauth'
 import { getGame } from '@architect/shared/db/games.mjs'
+import { getCurrentInvites } from '@architect/shared/db/invites.mjs'
 import { dateToEnglish } from '@architect/shared/utils.mjs'
 
 const auth = arcOauth.auth
@@ -43,10 +45,11 @@ async function gameStatus(req) {
   const spareSkaters = spares.filter((player) => player.position !== 'goalie')
   const spareGoalies = spares.filter((player) => player.position === 'goalie')
   const cancellations = await getPlayerInfo(game.cancellations)
-
-  console.log(spares)
-
-  console.log(game.spares)
+  const declined = await getPlayerInfo(game.declined)
+  const invites = await getCurrentInvites(game)
+  const invited = await Promise.all(
+    invites.map((invite) => getPlayer(invite.email))
+  )
 
   return {
     html: render(
@@ -62,7 +65,7 @@ async function gameStatus(req) {
         </hockey-action-buttons>
         <div class="grid row-auto col-2 gap-1">
           <div>
-          <h2>Players</h2>
+          <h2 class="mb-3 fw-medium font-bold c-p1 text0 color-darkest">Players</h2>
             <enhance-table>
                 <enhance-thead>
                   <enhance-tr><enhance-th>Name</enhance-th><enhance-th class="unseen">Pos</enhance-th><enhance-th>Away</enhance-th></enhance-tr>
@@ -92,7 +95,7 @@ async function gameStatus(req) {
               </enhance-table>
             </div>
             <div>
-              <h2>Spares</h2>
+              <h2 class="mb-3 fw-medium font-bold c-p1 text0 color-darkest">Spares</h2>
               <enhance-table>
                 <enhance-thead>
                   <enhance-tr><enhance-th>Name</enhance-th><enhance-th class="unseen">Pos</enhance-th></enhance-tr>
@@ -117,20 +120,40 @@ async function gameStatus(req) {
                     .join('')}
                 </enhance-tbody>
               </enhance-table>
-              <h2>Invitations</h2>
+              <h2 class="mb-3 fw-medium font-bold c-p1 text0 color-darkest">Invitations</h2>
               <enhance-table>
                 <enhance-thead>
                   <enhance-tr><enhance-th>Name</enhance-th></enhance-tr>
                 </enhance-thead>
                 <enhance-tbody>
+                ${invited
+                  .map((player) => {
+                    return `<enhance-tr>
+                  <enhance-td>
+                    ${player.name}
+                  </enhance-td>
+                  <enhance-td class="capitalize unseen">${player.position[0]}</enhance-td>
+                </enhance-tr>`
+                  })
+                  .join('')}
                 </enhance-tbody>
               </enhance-table>
-              <h2>Declined</h2>
+              <h2 class="mb-3 fw-medium font-bold c-p1 text0 color-darkest">Declined</h2>
               <enhance-table>
                 <enhance-thead>
                   <enhance-tr><enhance-th>Name</enhance-th></enhance-tr>
                 </enhance-thead>
                 <enhance-tbody>
+                ${declined
+                  .map((player) => {
+                    return `<enhance-tr>
+                  <enhance-td>
+                    ${player.name}
+                  </enhance-td>
+                  <enhance-td class="capitalize unseen">${player.position[0]}</enhance-td>
+                </enhance-tr>`
+                  })
+                  .join('')}
                 </enhance-tbody>
               </enhance-table>
             </div>
