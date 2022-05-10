@@ -5,11 +5,8 @@ export default function EnhanceTBody({ html }) {
       enhance-tbody {
         display: contents;
       }
-      .enhance-tbody {
-        display: table-row-group;
-      }
     </style>
-    <div class="enhance-tbody">
+    <div class="display-tbody">
       <slot></slot>
     </div>
   `

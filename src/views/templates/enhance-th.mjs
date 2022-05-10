@@ -6,12 +6,9 @@ export default function EnhanceTH({ html, state }) {
       enhance-th {
         display: contents;
       }
-      .th {
-        display: table-cell;
-      }
     </style>
     <div
-      class="th pt-1 pb-1 pr0 pl0 m-none text-left sticky font-bold color-grey top0"
+      class="display-table-cell pt-1 pb-1 pr0 pl0 m-none text-left sticky font-bold color-grey top0"
       ${width ? `style="width: ${width};"` : ''}>
       <slot></slot>
     </div>

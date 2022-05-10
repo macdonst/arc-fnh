@@ -5,11 +5,8 @@ export default function EnhanceTHead({ html }) {
       enhance-thead {
         display: contents;
       }
-      .enhance-thead {
-        display: table-header-group;
-      }
     </style>
-    <div class="enhance-thead">
+    <div class="display-thead">
       <slot></slot>
     </div>
   `

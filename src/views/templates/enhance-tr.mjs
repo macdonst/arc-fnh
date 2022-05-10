@@ -4,11 +4,8 @@ export default function EnhanceTR({ html }) {
       enhance-tr {
         display: contents;
       }
-      .enhance-tr {
-        display: table-row;
-      }
     </style>
-    <div class="enhance-tr">
+    <div class="display-tr">
       <slot></slot>
     </div>
   `

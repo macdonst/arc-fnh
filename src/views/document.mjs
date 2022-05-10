@@ -154,6 +154,24 @@ export default function Document(body = '') {
       .hoverTable enhance-tbody .enhance-tbody enhance-tr .enhance-tr:hover {
         background-color: var(--grey1);
       }
+      .border-separate {
+        border-collapse: separate;
+      }
+      .display-table {
+        display: table;
+      }
+      .display-tbody {
+        display: table-row-group;
+      }
+      .display-table-cell {
+        display: table-cell;
+      }
+      .display-thead {
+        display: table-header-group;
+      }
+      .display-tr {
+        display: table-row;
+      }
       @media only screen and (max-width: 27.5em) {
         .unseen {
           display: none;

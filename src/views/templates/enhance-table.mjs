@@ -7,14 +7,10 @@ export default function EnhanceTable({ html, state = {} }) {
         display: inline-block;
         width: ${width};
       }
-      .enhance-table {
-        display: table;
-        border-collapse: separate;
-      }
     </style>
 
     <div class="mt-1 mb-1 bg-lighter radius2 shadow0 pt-2 pb-2">
-      <div class="enhance-table w-full hoverTable">
+      <div class="display-table border-separate w-full hoverTable">
         <slot></slot>
       </div>
     </div>
