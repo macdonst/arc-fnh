@@ -96,15 +96,17 @@ async function gameStatus(req) {
             </div>
             <div>
               <h2 class="mb-3 fw-medium font-bold c-p1 text0 color-darkest">Spares</h2>
-              <enhance-table>
+              <enhance-table class="mb0">
                 <enhance-thead>
-                  <enhance-tr><enhance-th>Name</enhance-th><enhance-th class="unseen">Pos</enhance-th></enhance-tr>
+                  <enhance-tr><enhance-th width="80%">Name</enhance-th><enhance-th class="unseen">Pos</enhance-th></enhance-tr>
                 </enhance-thead>
                 <enhance-tbody>
-                  ${cancellations
-                    .map((cancellation) => {
-                      const spare = game.spares?.shift() || ''
-                      return `<enhance-tr>
+                  ${
+                    cancellations.length > 0
+                      ? cancellations
+                          .map((cancellation) => {
+                            const spare = game.spares?.shift() || ''
+                            return `<enhance-tr>
                     <enhance-td>
                       ${
                         cancellation.position !== 'goalie'
@@ -116,44 +118,54 @@ async function gameStatus(req) {
                       cancellation.position[0]
                     }</enhance-td>
                   </enhance-tr>`
-                    })
-                    .join('')}
+                          })
+                          .join('')
+                      : '<enhance-tr><enhance-td>No Cancellations</enhance-td></enhance-tr>'
+                  }
                 </enhance-tbody>
               </enhance-table>
               <h2 class="mb-3 fw-medium font-bold c-p1 text0 color-darkest">Invitations</h2>
-              <enhance-table>
+              <enhance-table class="mb0">
                 <enhance-thead>
-                  <enhance-tr><enhance-th>Name</enhance-th></enhance-tr>
+                  <enhance-tr><enhance-th width="80%">Name</enhance-th><enhance-th class="unseen">Pos</enhance-th></enhance-tr>
                 </enhance-thead>
                 <enhance-tbody>
-                ${invited
-                  .map((player) => {
-                    return `<enhance-tr>
+                ${
+                  invited.length > 0
+                    ? invited
+                        .map((player) => {
+                          return `<enhance-tr>
                   <enhance-td>
                     ${player.name}
                   </enhance-td>
                   <enhance-td class="capitalize unseen">${player.position[0]}</enhance-td>
                 </enhance-tr>`
-                  })
-                  .join('')}
+                        })
+                        .join('')
+                    : '<enhance-tr><enhance-td>No Invites</enhance-td></enhance-tr>'
+                }
                 </enhance-tbody>
               </enhance-table>
               <h2 class="mb-3 fw-medium font-bold c-p1 text0 color-darkest">Declined</h2>
-              <enhance-table>
+              <enhance-table class="mb0">
                 <enhance-thead>
-                  <enhance-tr><enhance-th>Name</enhance-th></enhance-tr>
+                  <enhance-tr><enhance-th width="80%">Name</enhance-th><enhance-th class="unseen">Pos</enhance-th></enhance-tr>
                 </enhance-thead>
                 <enhance-tbody>
-                ${declined
-                  .map((player) => {
-                    return `<enhance-tr>
+                ${
+                  declined.length > 0
+                    ? declined
+                        .map((player) => {
+                          return `<enhance-tr>
                   <enhance-td>
                     ${player.name}
                   </enhance-td>
                   <enhance-td class="capitalize unseen">${player.position[0]}</enhance-td>
                 </enhance-tr>`
-                  })
-                  .join('')}
+                        })
+                        .join('')
+                    : '<enhance-tr><enhance-td>Nobody Declined</enhance-td></enhance-tr>'
+                }
                 </enhance-tbody>
               </enhance-table>
             </div>
