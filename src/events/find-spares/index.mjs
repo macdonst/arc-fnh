@@ -99,14 +99,30 @@ function createBody({
   let body = `<p>Hey ${spare.name.split(' ')[0]},</p>
 <p>I need a spare for our game on ${dayOfWeek} ${month} ${dayOfMonth} at the ${facility} with a start time of ${time}. The spare fee is $15.</p>
 <p>Lemme know if you want to play.</p>
-<ul>
-<li><a href="${hostname}invite/${inviteID}?attend=yes">Yes, I can play!</a></li>
-<li><a href="${hostname}invite/${inviteID}?attend=no">No, I can't make it this week.</a></li>
-</ul>
+<p>${createEmailButton(
+    'Yes, I can play!',
+    `${hostname}invite/${inviteID}?attend=yes`,
+    `rgb(16, 113, 84)`
+  )}</p>
+<p>${createEmailButton(
+    `No, I can't make it this week.`,
+    `${hostname}invite/${inviteID}?attend=no`,
+    `rgb(187, 18, 26)`
+  )}</p>
 <p>Simon Mac Donald<br/>
 http://simonmacdonald.com</p>`
 
   return body
+}
+
+function createEmailButton(text, url, color = '#1F7F4C') {
+  return `<table border="0" cellspacing="0" cellpadding="0" width="290px">
+  <tr>
+      <td align="center" style="border-radius: 5px; background-color: ${color};">
+          <a href="${url}" target="_blank" style="font-size: 18px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; font-weight: bold; text-decoration: none;border-radius: 5px; padding: 12px 18px; border: 1px solid ${color}; display: inline-block;">${text}</a>
+      </td>
+  </tr>
+</table>`
 }
 
 export const handler = arc.events.subscribe(findSpares)
