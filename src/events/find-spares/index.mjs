@@ -28,7 +28,7 @@ async function findSpares(event) {
     // convert game time to timestamp
     const gameTime = new Date(`${game.gamedate} ${game.time}:00`).getTime()
     // get all invites sent for the game
-    const currentInvites = await getCurrentInvites(gameTime)
+    const currentInvites = await getCurrentInvites(game)
 
     // do we need to invite anyone
     if (currentInvites.length < sparesNeeded.skaters) {
