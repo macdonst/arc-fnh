@@ -99,18 +99,23 @@ function sparesNeeded(players, cancellations, spares) {
 async function numberOfSparesNeeded(game) {
   let { cancellations = [], spares = [] } = game
   const players = await getFulltimeSkaters()
+  const goalieCancellations = (await getPlayerInfo(cancellations)).filter(
+    (player) => player.position === 'goalie'
+  )
   cancellations = (await getPlayerInfo(cancellations)).filter(
     (player) => player.position !== 'goalie'
   )
   spares = await getPlayerInfo(spares)
-  const goalies = await getGoalies(cancellations, spares)
+  const goalies = await getGoalies(goalieCancellations, spares)
   const short = sparesNeeded(
     players.length,
     cancellations.length,
     spares.filter((player) => player !== undefined).length
   )
-
-  return { skaters: short, goalies: 2 - goalies.length }
+  return {
+    skaters: short,
+    goalies: 2 - (goalies.length - goalieCancellations.length)
+  }
 }
 
 export {
