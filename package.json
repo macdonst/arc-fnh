@@ -10,7 +10,7 @@
         "test:unit": "tape 'test/**/*.js' | tap-arc"
     },
     "devDependencies": {
-        "@architect/architect": "^10.2.2",
+        "@architect/architect": "^10.3.3",
         "@architect/eslint-config": "^2.0.1",
         "@architect/plugin-lambda-invoker": "^0.1.1",
         "eslint": "^8.11.0",
@@ -22,7 +22,7 @@
         "tape": "^5.5.2"
     },
     "dependencies": {
-        "@architect/functions": "^5.0.5",
+        "@architect/functions": "^5.1.0",
         "@enhance/ssr": "^2.0.3",
         "@enhance/styles": "^1.0.0",
         "@googleapis/sheets": "^2.0.1",
