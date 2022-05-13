@@ -1,6 +1,6 @@
 {
     "name": "arc-fnh",
-    "version": "0.0.19",
+    "version": "0.0.20",
     "description": "A fresh new Architect project!",
     "scripts": {
         "lint": "eslint 'src/**/**.*js' --ignore-pattern node_modules  --fix",
