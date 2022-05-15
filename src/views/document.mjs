@@ -172,6 +172,9 @@ export default function Document(body = '') {
       .display-tr {
         display: table-row;
       }
+      .text-decoration-inherit {
+        text-decoration: inherit;
+      }
       @media only screen and (max-width: 27.5em) {
         .unseen {
           display: none;
