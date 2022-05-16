@@ -36,11 +36,10 @@ async function gameStatus(req) {
   const initialState = { account: req.session?.account }
   const id = req.pathParameters?.id
   const game = await getGame(id)
+
   const { dayOfWeek, month, dayOfMonth } = dateToEnglish(game)
 
   const players = await getFulltimePlayers()
-  const skaters = players.filter((player) => player.position !== 'goalie')
-  const goalies = players.filter((player) => player.position === 'goalie')
   const spares = await getSpares()
   const spareSkaters = spares.filter((player) => player.position !== 'goalie')
   const spareGoalies = spares.filter((player) => player.position === 'goalie')
@@ -71,7 +70,7 @@ async function gameStatus(req) {
                   <enhance-tr><enhance-th>Name</enhance-th><enhance-th class="unseen">Pos</enhance-th><enhance-th>Away</enhance-th></enhance-tr>
                 </enhance-thead>
                 <enhance-tbody>
-                  ${[...skaters, ...goalies]
+                  ${players
                     .map(function (player) {
                       const cancelled = game.cancellations?.includes(
                         player.email
