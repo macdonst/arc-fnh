@@ -110,7 +110,9 @@ async function numberOfSparesNeeded(game) {
   const short = sparesNeeded(
     players.length,
     cancellations.length,
-    spares.filter((player) => player !== undefined).length
+    spares.filter(
+      (player) => player !== undefined && player?.position !== 'goalie'
+    ).length
   )
   return {
     skaters: short,
