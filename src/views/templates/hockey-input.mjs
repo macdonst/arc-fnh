@@ -16,7 +16,9 @@ export default function HockeyInputTemplate({ html, state = {} }) {
           ${required === 'true' ? `required` : ``}
           ${type === 'checkbox' ? 'value="true"' : `value="${value}"`}
           ${(type === 'checkbox') & (value === 'true') ? 'checked' : ''}
-          class="leading5-l pt-3 pb-3 pl-1 pr-1 radius2 shadow-2" />
+          class="leading5-l pt-3 pb-3 pl-1 pr-1 radius2 ${type !== 'checkbox'
+            ? 'shadow-2'
+            : ''}" />
       </label>
     </div>
 
