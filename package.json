@@ -23,7 +23,7 @@
     },
     "dependencies": {
         "@architect/functions": "^5.1.0",
-        "@enhance/ssr": "^2.0.3",
+        "@enhance/ssr": "^2.3.3",
         "@enhance/styles": "^1.0.0",
         "@googleapis/sheets": "^2.0.1",
         "arc-plugin-oauth": "^0.0.15",
