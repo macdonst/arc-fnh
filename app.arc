@@ -85,4 +85,4 @@ seasons
 # profile default
 region us-west-2
 architecture arm64
-runtime nodejs16.x
+runtime nodejs20.x
