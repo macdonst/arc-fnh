@@ -10,26 +10,27 @@
         "test:unit": "tape 'test/**/*.js' | tap-arc"
     },
     "devDependencies": {
-        "@architect/architect": "^10.3.3",
-        "@architect/eslint-config": "^2.0.1",
-        "@architect/plugin-lambda-invoker": "^0.1.1",
-        "eslint": "^8.11.0",
-        "eslint-config-prettier": "^8.5.0",
-        "eslint-plugin-prettier": "^4.0.0",
-        "prettier": "^2.6.0",
-        "prettier-eslint": "^13.0.0",
-        "tap-arc": "^0.1.2",
-        "tape": "^5.5.2"
+        "@architect/architect": "^10.16.3",
+        "@architect/eslint-config": "^2.1.2",
+        "@architect/plugin-lambda-invoker": "^1.2.0",
+        "@architect/sandbox": "^5.9.4",
+        "eslint": "^8.56.0",
+        "eslint-config-prettier": "^9.1.0",
+        "eslint-plugin-prettier": "^5.1.2",
+        "prettier": "^3.1.1",
+        "prettier-eslint": "^16.2.0",
+        "tap-arc": "^1.2.2",
+        "tape": "^5.7.2"
     },
     "dependencies": {
-        "@architect/functions": "^5.1.0",
-        "@enhance/ssr": "^2.3.3",
+        "@architect/functions": "^7.0.0",
+        "@enhance/ssr": "^3.5.1",
         "@enhance/styles": "^1.0.0",
         "@googleapis/sheets": "^2.0.1",
-        "arc-plugin-oauth": "^0.0.15",
+        "arc-plugin-oauth": "^0.2.1",
         "google-auth-library": "^7.14.1",
-        "nanoid": "^3.3.2",
-        "nodemailer": "^6.7.3"
+        "nanoid": "^5.0.4",
+        "nodemailer": "^6.9.7"
     },
     "eslintConfig": {
         "extends": [
