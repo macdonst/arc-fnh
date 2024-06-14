@@ -10,11 +10,11 @@
         "test:unit": "tape 'test/**/*.js' | tap-arc"
     },
     "devDependencies": {
-        "@architect/architect": "^10.16.3",
+        "@architect/architect": "^11.0.13",
         "@architect/eslint-config": "^2.1.2",
-        "@architect/plugin-lambda-invoker": "^1.2.0",
-        "@architect/sandbox": "^5.9.4",
-        "eslint": "^8.56.0",
+        "@architect/plugin-lambda-invoker": "^2.0.0",
+        "@architect/sandbox": "^6.0.5",
+        "eslint": "^9.5.0",
         "eslint-config-prettier": "^9.1.0",
         "eslint-plugin-prettier": "^5.1.2",
         "prettier": "^3.1.1",
@@ -23,9 +23,9 @@
         "tape": "^5.7.2"
     },
     "dependencies": {
-        "@architect/functions": "^7.0.0",
-        "@enhance/ssr": "^3.5.1",
-        "@enhance/styles": "^1.0.0",
+        "@architect/functions": "^8.1.6",
+        "@enhance/ssr": "^4.0.2",
+        "@enhance/styles": "^6.5.0",
         "@googleapis/sheets": "^2.0.1",
         "arc-plugin-oauth": "^0.2.2",
         "google-auth-library": "^7.14.1",
