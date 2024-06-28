@@ -1,10 +1,10 @@
 import arc from '@architect/functions'
 import { upsertGame } from '@architect/shared/db/games.mjs'
 import { getSeasonWithGame } from '@architect/shared/db/seasons.mjs'
-import arcOauth from 'arc-plugin-oauth'
-const auth = arcOauth.auth
+import authenticate from '@architect/shared/auth.mjs'
 
-export const handler = arc.http.async(auth, http)
+
+export const handler = arc.http.async(authenticate, http)
 
 async function http(req) {
   await upsertGame(req.body)

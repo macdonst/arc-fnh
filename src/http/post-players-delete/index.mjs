@@ -1,9 +1,9 @@
 import arc from '@architect/functions'
 import { deletePlayer } from '@architect/shared/db/players.mjs'
-import arcOauth from 'arc-plugin-oauth'
-const auth = arcOauth.auth
+import authenticate from '@architect/shared/auth.mjs'
 
-export const handler = arc.http.async(auth, http)
+
+export const handler = arc.http.async(authenticate, http)
 
 async function http(req) {
   const { todelete = [] } = req.body

@@ -6,14 +6,14 @@ import {
   getPlayer,
   getSpares
 } from '@architect/shared/db/players.mjs'
-import arcOauth from 'arc-plugin-oauth'
+import authenticate from '@architect/shared/auth.mjs'
 import { getGame } from '@architect/shared/db/games.mjs'
 import { getCurrentInvites } from '@architect/shared/db/invites.mjs'
 import { dateToEnglish } from '@architect/shared/utils.mjs'
 
-const auth = arcOauth.auth
 
-export const handler = arc.http.async(auth, gameStatus)
+
+export const handler = arc.http.async(authenticate, gameStatus)
 
 function createSelectBox(spares, currentSpare) {
   return `<select name="spares" class="leading5-l pt-3 pb-3 pl-1 pr2  radius2 shadow-2">

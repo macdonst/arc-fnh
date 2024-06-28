@@ -1,12 +1,12 @@
 import arc from '@architect/functions'
 import { getGame } from '@architect/shared/db/games.mjs'
 import render from '@architect/views/render.mjs'
-import arcOauth from 'arc-plugin-oauth'
-const auth = arcOauth.auth
+import authenticate from '@architect/shared/auth.mjs'
+
 
 const initialGame = { gamedate: '', time: '', facility: '' }
 
-export const handler = arc.http.async(auth, games)
+export const handler = arc.http.async(authenticate, games)
 
 async function games(req) {
   const initialState = { account: req.session?.account }

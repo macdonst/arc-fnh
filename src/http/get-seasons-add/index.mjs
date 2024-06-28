@@ -1,8 +1,8 @@
 import arc from '@architect/functions'
 import { getSeason } from '@architect/shared/db/seasons.mjs'
 import render from '@architect/views/render.mjs'
-import arcOauth from 'arc-plugin-oauth'
-const auth = arcOauth.auth
+import authenticate from '@architect/shared/auth.mjs'
+
 
 const initialSeason = {
   seasonID: '',
@@ -12,7 +12,7 @@ const initialSeason = {
   cost: ''
 }
 
-export const handler = arc.http.async(auth, players)
+export const handler = arc.http.async(authenticate, players)
 
 async function players(req) {
   const initialState = { account: req.session?.account }

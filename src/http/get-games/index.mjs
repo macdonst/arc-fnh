@@ -2,10 +2,10 @@ import arc from '@architect/functions'
 import render from '@architect/views/render.mjs'
 import { getGames, getGamesBySeason } from '@architect/shared/db/games.mjs'
 import { getSeason } from '@architect/shared/db/seasons.mjs'
-import arcOauth from 'arc-plugin-oauth'
-const auth = arcOauth.auth
+import authenticate from '@architect/shared/auth.mjs'
 
-export const handler = arc.http.async(auth, games)
+
+export const handler = arc.http.async(authenticate, games)
 
 async function games(req) {
   const { season } = req.query

@@ -9,6 +9,15 @@ folder public
 get /
 get /components/*
 
+get /login
+get /register
+post /login
+post /register/options     # HTML for generateRegistrationOptions
+post /register/verify      # JSON to verifyRegistrationResponse
+post /authenticate/options # HTML for generateAuthenticationOptions
+post /authenticate/verify  # JSON to verifyAuthenticationResponse
+post /logout
+
 get /players
 get /players/add
 post /players
@@ -43,7 +52,6 @@ weekly-reminder cron(0 8 ? * WED *)
 weekly-roster cron(0 10 ? * FRI *)
 
 @plugins
-arc-plugin-oauth
 architect/plugin-lambda-invoker
 
 @oauth
@@ -51,6 +59,9 @@ use-mock true
 allow-list allow.mjs
 
 @tables
+accounts
+  username *String
+
 players
   email *String
 
@@ -63,6 +74,10 @@ seasons
 invites
   inviteID *String
   expiresAt TTL
+
+sessions
+  _idx *
+  ttl ttl
 
 @tables-indexes
 players

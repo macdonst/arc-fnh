@@ -7,14 +7,17 @@ import {
   numberOfSparesNeeded
 } from '@architect/shared/db/players.mjs'
 import render from '@architect/views/render.mjs'
-import arcOauth from 'arc-plugin-oauth'
+import authenticate from '@architect/shared/auth.mjs'
 import { dateToEnglish } from '@architect/shared/utils.mjs'
 
-const auth = arcOauth.auth
 
-export const handler = arc.http.async(auth, index)
+
+export const handler = arc.http.async(index)
 
 async function index(req) {
+
+  console.log('index', req)
+
   const initialState = { account: req.session?.account }
 
   const next = await getNextGame()

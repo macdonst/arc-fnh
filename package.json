@@ -27,6 +27,7 @@
         "@enhance/ssr": "^4.0.2",
         "@enhance/styles": "^6.5.0",
         "@googleapis/sheets": "^2.0.1",
+        "@simplewebauthn/server": "^10.0.0",
         "google-auth-library": "^7.14.1",
         "nanoid": "^5.0.4",
         "nodemailer": "^6.9.7",
