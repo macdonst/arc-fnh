@@ -97,7 +97,7 @@ function createBody({
 }) {
   const hostname = getHostname()
   let body = `<p>Hey ${spare.name.split(' ')[0]},</p>
-<p>I need a spare for our game on ${dayOfWeek} ${month} ${dayOfMonth} at the ${facility} with a start time of ${time}. The spare fee is $18.</p>
+<p>I need a spare for our game on ${dayOfWeek} ${month} ${dayOfMonth} at the ${facility} with a start time of ${time}. The spare fee is $20.</p>
 <p>Lemme know if you want to play.</p>
 <p>${createEmailButton(
     'Yes, I can play!',
